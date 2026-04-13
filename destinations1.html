@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title> TripCanvas </title>
+
+<link rel="stylesheet" href="style.css">
+<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Metal' rel='stylesheet'>
+
+
+<!----Favicon--->
+<link rel="icon" type="image/png" href="images/logo.png">
+</head>
+
+<body class="destinations-page">
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" class="nav-logo">
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="nav-links" id="navLinks">
+    <a href="travel1.html">🏡Home</a>
+    <a href="#" onclick="goToDestinations()">🗺️Destinations</a>
+    <a href="#" onclick="goToHotels()">🍽️Hotels</a>
+    <a href="#" onclick="goToPlanner()">🗓️Trip Planner</a>
+    <a href="about.html">About</a>
+    <a href="contact1.html">📞Contact</a>
+  </nav>
+
+  <!-- Right side: hamburger + profile -->
+  <div class="nav-right">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="profile-container" onclick="toggleProfile()">
+    <div class="profile-circle" id="profileCircle"></div>
+      <div class="profile-dropdown" id="profileDropdown">
+      <p id="userEmailDisplay"></p>
+      <a href="#" onclick="logout()">Logout</a>
+  </div>
+</div>
+  </div>
+</header>
+
+<section class="hero">
+<video autoplay muted loop playsinline class="heading-video">
+<source src="videos/v11.mp4" type="video/mp4">
+</video>
+</section>
+
+<div class="hero-text">
+<h2>Explore Incredible Destinations</h2>
+<p>Discover India's beauty and global wonders</p>
+</div>
+
+<div class="planner-nav">
+  
+  <div class="planner-card" onclick="scrollToSection('south')">
+    🌴
+    <h3>South India</h3>
+  </div>
+
+  <div class="planner-card" onclick="scrollToSection('north')">
+    🏔️
+    <h3>North India</h3>
+  </div>
+
+  <div class="planner-card" onclick="scrollToSection('global')">
+    🌍
+    <h3>International</h3>
+  </div>
+
+</div>
+
+
+<section class="destinations" id="home">
+<h2>Explore Incredible Destinations</h2>
+
+<div class="card-container">
+
+<div class="card">
+<img src="images/india.jpg">
+<h3>Indian Escapes</h3>
+<button class="explore-btn" onclick="scrollToIndia()">Explore</button>
+</div>
+
+<div class="card">
+  <img src="images/global.jpg">
+  <h3>Global Wonders</h3>
+<button class="explore-btn" onclick="scrollToGlobal()">Explore</button>
+</div>
+
+</div>
+</section>
+
+<section class="destinations" id="India">
+<div class="section-video-header">
+<video autoplay muted loop playsinline class="heading-video">
+<source src="videos/v6.mp4" type="video/mp4">
+</video>
+
+<h2 class="section-title">Indian Escapes</h2>
+</div>
+
+<section id="south">
+<h2 class="section-title">Dive into Southern India</h2>
+</section>
+
+<div class="card-container">
+
+<div class ="card">
+<img src = "images/ooty.jpg">
+<h3>🚂Ooty</h3>
+<p>Queen of Hills</p>
+<details>
+      <summary>Learn more</summary>
+      <p>A peaceful hill station known for tea gardens, toy train rides, and cool weather.</p><br>
+      <p>Location:<em>Tamil Nadu</em></p>
+<br>
+<a href="planner1.html#ooty">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/alleppey.jpg">
+<h3>🌊Alleppey</h3>
+<p>Backwater Heaven</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>Famous for backwaters and houseboat cruises through scenic canals.</p><br>
+      <p>Location:<em>Kerala</em></p>
+<br>
+<a href="planner1.html#alleppey">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/munnar.jpg">
+<h3>🍃Munnar</h3>
+<p>Tea Garden Hills</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>Beautiful hill station known for endless tea plantations and misty mountains.</p><br>
+      <p>Location:<em>Kerala</em></p>
+<br>
+<a href="planner1.html#munnar">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/coorg.jpg">
+<h3>🛤️Coorg</h3>
+<p>Scotland of India</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>A green paradise filled with coffee plantations, waterfalls, and wildlife.</p><br>
+      <p>Location:<em>Karnataka</em></p>
+<br>
+<a href="planner1.html#coorg">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/kanyakumari.jpg">
+<h3>⛵Kanyakumari</h3>
+<p>Land’s End of India</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>Kanyakumari is the southernmost tip of India where the Arabian Sea, Bay of Bengal, and Indian Ocean meet. It is famous for sunrise, sunset, and Vivekananda Rock Memorial.</p><br>
+      <p>Location:<em>Tamil Nadu</em></p>
+<br>
+<a href="planner1.html#kanyakumari">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/lambasingi.jpeg">
+<h3>☃️Lambasingi</h3>
+<p>Kashmir of Andhra Pradesh</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>A cool hill station known as the Kashmir of Andhra Pradesh.</p><br>
+      <p>Location:<em>Andhra Pradesh</em></p>
+<br>
+<a href="planner1.html#lambasingi">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/mysore.jpg">
+<h3>🏰Mysore</h3>
+<p>City of Palaces</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>A royal heritage city famous for Mysore Palace and Dasara festival.</p><br>
+      <p>Location:<em>Karnataka</em></p>
+<br>
+<a href="planner1.html#mysore">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/Bangalore.jpg">
+<h3>💚Bangalore</h3>
+<p>Garden City of India</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>Bangalore is a modern city known for its IT industry, pleasant climate, beautiful parks, and vibrant nightlife. It is a perfect mix of technology, culture, and city life.</p><br>
+      <p>Location:<em>Karnataka</em></p>
+<br>
+<a href="planner1.html#bangalore">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+</div>
+</section>
+
+<section id="north" class="destinations">
+<h2 class="section-title">Northern India</h2>
+
+<div class ="card-container">
+
+<div class ="card">
+<img src = "images/manali.jpg">
+<h3>❄️Manali</h3>
+<p>Snow Paradise</p>
+<details>
+      <summary>Learn more</summary>
+      <p>A popular mountain destination known for snow, adventure sports, and scenic valleys.</p><br>
+      <p>Location:<em>Himachal Pradesh</em></p>
+<br>
+<a href="planner1.html#manali">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/goa.jpg">
+<h3>🏖️Goa</h3>
+<p>Beach Paradise</p>
+ <details>
+      <summary>Learn more</summary>
+      <p>India’s most famous beach destination, known for golden beaches, vibrant nightlife, Portuguese heritage, and delicious seafood.</p><br>
+      <p>Location:<em>Goa</em></p>
+<br>
+<a href="planner1.html#goa">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/Agra.jpg">
+<h3>🕌Agra</h3>
+<p>Taj Mahal City</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>Home to the world-famous Taj Mahal and Mughal architecture.</p><br>
+      <p>Location:<em>Uttar Pradesh</em></p>
+<br
+<a href="planner1.html#agra">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/meghalaya.jpg">
+<h3>🎋Meghalaya</h3>
+<p>Abode of Clouds</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>A beautiful state known for waterfalls, caves, and living root bridges.</p><br>
+      <p>Location:<em>Meghalaya</em></p>
+<br>
+<a href="planner1.html#meghalaya">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/jaipur.jpg">
+<h3>🩷Jaipur</h3>
+<p>Pink City</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>The Pink City famous for palaces, forts, and royal heritage.</p><br>
+      <p>Location:<em>Rajasthan</em></p>
+<br>
+<a href="planner1.html#jaipur">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/udaipur.jpg">
+<h3>🛶Udaipur</h3>
+<p>Crown city of Rajasthan</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>The City of Lakes known for romantic palaces and boat rides.</p><br>
+      <p>Location:<em>Rajasthan</em></p>
+<br>
+<a href="planner1.html#udaipur">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+</div>
+</section>
+
+<section class="destinations" id="global">
+<div class="section-video-header">
+<video autoplay muted loop playsinline class="heading-video">
+<source src="videos/v7.mp4" type="video/mp4">
+</video>
+<h2 class="section-title">Global Wonders</h2>
+</div>
+
+<div class = "card-container">
+
+<div class ="card">
+<img src = "images/paris.jpg">
+<h3>🗼Paris</h3>
+<p>City of Lights and Romance</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>The City of Light,famous for the Eiffel Tower, romantic streets and world-class cuisine. A perfect blend of history and modern charm.</p>
+      <br>
+      <p>Location:<em>France</em></p>
+<br>
+<a href="planner1.html#paris">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/bali.jpg">
+<h3>🛕Bali</h3>
+<p>Land of God's</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>An island paradise in Indonesia, known for its beaches, temples, and lush rice terraces. Ideal for relaxation and adventure alike.</p><br>
+      <p>Location:<em>Indonesia</em></p>
+<br>
+<a href="planner1.html#bali">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/newyork.jpg">
+<h3>🗽New York</h3>
+<p>The City of Skyscrapers</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>The city that never sleeps, offering iconic landmarks like Times Square, Central Park, and Broadway. A hub of culture and excitement.</p><br>
+      <p>Location:<em>USA</em></p>
+<br>
+<a href="planner1.html#newyork">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/tokyo.jpg">
+<h3>🏯Tokyo</h3>
+<p>Future City</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>Tokyo is famous for technology, anime culture, temples, and busy city life.</p><br>
+      <p>Location:<em>Japan</em></p>
+<br>
+<a href="planner1.html#tokyo">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/rome.jpg">
+<h3>🏛️Rome</h3>
+<p>Eternal City</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>Rome is known for ancient monuments like the Colosseum and Roman history.</p><br>
+      <p>Location:<em>Italy</em></p>
+<br>
+<a href="planner1.html#rome">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+<div class ="card">
+<img src = "images/switzerland.jpg">
+<h3>🏞️Switzerland</h3>
+<p>Heaven on Earth</p><br>
+<details>
+      <summary>Learn more</summary>
+      <p>Switzerland is famous for snow mountains, lakes, and scenic train journeys.</p><br>
+      <p>Location:<em>Switzerland</em></p>
+<br>
+<a href="planner1.html#switzerland">
+<button class="explore-btn">Visit Now</button>
+</a>
+</details>
+</div>
+
+</div>
+</section>
+
+
+
+<footer class="footer">
+<div class="footer-container">
+
+<div class = "footer-section">
+<h3>TripCanvas</h3>
+<p>Your trusted partner for planning memorable trips across India and the World.</p>
+</div>
+<div class="footer-section">
+<h3>Quick Links</h3>
+<a href="travel1.html">Home</a><br>
+<a href="destinations1.html">Destinations</a><br>
+<a href="hotels1.html">Hotels</a><br>
+<a href="planner1.html">Trip Planner</a><br>
+<a href="about.html">About</a></br>
+<a href="contact1.html">Contact</a>
+</div>
+<div class="footer-section">
+<h3>Contact Us</h3>
+<p>📍Bangalore,India</p>
+<p>📞 +91 98765 43210</p>
+<p>📧 tripCanvas@gmail.com</p>
+</div>
+
+</div>
+
+<p class="copyright">© 2026 TripCanvas | All Rights Reserved </p>
+</footer>
+
+<script>
+function scrollToIndia() {
+  document.getElementById("India").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function scrollToGlobal() {
+  document.getElementById("global").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+window.addEventListener("scroll", function() {
+  let cards = document.querySelectorAll(".destinations-page .card");
+  let triggerBottom = window.innerHeight * 0.85;
+
+  cards.forEach(card => {
+    let cardTop = card.getBoundingClientRect().top;
+
+    if (cardTop < triggerBottom) {
+      card.classList.add("show");
+    }
+  });
+});
+
+window.onscroll = function() {
+  let btn = document.getElementById("topBtn");
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+function logout(){
+  localStorage.removeItem("loggedInUser");
+
+  // hide profile again
+  document.querySelector(".profile-container").style.display = "none";
+
+  alert("Logged out!");
+  location.href="travel1.html";
+}
+
+function toggleProfile(){
+  let dropdown = document.getElementById("profileDropdown");
+  dropdown.style.display = 
+    dropdown.style.display === "block" ? "none" : "block";
+}
+
+window.onload = function(){
+  let user = localStorage.getItem("loggedInUser");
+
+  if(user){
+    // SHOW profile
+    document.querySelector(".profile-container").style.display = "block";
+
+    // Set first letter
+    let firstLetter = user.charAt(0).toUpperCase();
+    document.getElementById("profileCircle").innerText = firstLetter;
+
+    // Show email
+    document.getElementById("userEmailDisplay").innerText = user;
+  }
+};
+
+</script>
+
+<button onclick="scrollToTop()" id="topBtn">↑</button>
+
+</body>
+</html>
+
+

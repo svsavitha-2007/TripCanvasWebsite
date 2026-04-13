@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TripCanvas</title>
+
+<link rel="stylesheet" href="style.css">
+<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Metal' rel='stylesheet'>
+
+
+<!----Favicon--->
+<link rel="icon" type="image/png" href="images/logo.png">
+</head>
+
+<body class="hotels-page">
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" class="nav-logo">
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="nav-links" id="navLinks">
+    <a href="travel1.html">🏡Home</a>
+    <a href="#" onclick="goToDestinations()">🗺️Destinations</a>
+    <a href="#" onclick="goToHotels()">🍽️Hotels</a>
+    <a href="#" onclick="goToPlanner()">🗓️Trip Planner</a>
+    <a href="about.html">About</a>
+    <a href="contact1.html">📞Contact</a>
+  </nav>
+
+  <!-- Right side: hamburger + profile -->
+  <div class="nav-right">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="profile-container" onclick="toggleProfile()">
+    <div class="profile-circle" id="profileCircle"></div>
+      <div class="profile-dropdown" id="profileDropdown">
+      <p id="userEmailDisplay"></p>
+      <a href="#" onclick="logout()">Logout</a>
+  </div>
+</div>
+  </div>
+</header>
+
+
+<div class="hero-text">
+<h2>Choose Your Stay Experience</h2>
+<p>Experience elegance, comfort and unforgettable stays</p>
+</div>
+
+<section class="destinations">
+
+<div class="card-container">
+
+<div class="hotel-card" onclick="scrollToSection('beach')">
+<img src="images/beach1.jpg">
+<h3>🌊Beach Escapes</h3>
+</div>
+
+<div class="hotel-card" onclick="scrollToSection('mountain')">
+<img src="images/mountain.jpg">
+<h3>🏔️Mountain Retreat</h3>
+</div>
+
+<div class="hotel-card" onclick="scrollToSection('royal')">
+<img src="images/royal.jpg">
+<h3>🏰Royal Palace</h3>
+</div>
+
+<div class="hotel-card" onclick="scrollToSection('city')">
+<img src="images/city.jpg">
+<h3>🌆City Life</h3>
+</div>
+
+<div class="hotel-card" onclick="scrollToSection('nature')">
+<img src="images/nature.jpg">
+<h3>🌿Nature Stay</h3>
+</div>
+
+</div>
+</section>
+
+<!-- BEACH HOTELS -->
+<section id="beach" class="hotel-list">
+<h2>Goa & Alleppey -Beach Resorts</h2>
+<div class="horizontal-scroll">
+
+<div class="card-container">
+
+<div class="card">
+<img src="images/h1.jpg">
+<h3>Goa Sea Resort</h3>
+<p>₹8,000/night • ⭐⭐⭐⭐</p><br>
+<p>"Best beach view and relaxing stay."</p><br>
+<button class="explore-btn" onclick="openPopup('Goa Sea Resort','₹8,000/night')">Reserve Now</button>
+</div>
+
+<div class="card">
+<img src="images/h2.jpg">
+<h3>Calangute Beach Resort</h3>
+<p>₹6,500/night • ⭐⭐⭐⭐</p><br>
+<p>"Close to beach and nightlife."</p><br>
+<button class="explore-btn" onclick="openPopup('Calangute Beach Resort','₹6,500/night')">Reserve Now</button></div>
+
+<div class="card">
+<img src="images/h3.jpg">
+<h3>Alleppey Backwater Resort</h3>
+<p>₹7,000/night • ⭐⭐⭐⭐</p><br>
+<p>"Beautiful backwater stay."</p><br>
+<button class="explore-btn" onclick="openPopup('Alleppey Backwater Resort','₹7,000/night')">Reserve Now</button>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- MOUNTAIN HOTELS -->
+<section id="mountain" class="hotel-list">
+<h2>Manali, Ooty & Mountain Resorts</h2>
+<div class="horizontal-scroll">
+
+<div class="card-container">
+
+<div class="card">
+<img src="images/h4.jpg">
+<h3>Manali Hill Resort</h3>
+<p>₹7,500/night • ⭐⭐⭐⭐</p><br>
+<p>"Snow view and peaceful stay."</p><br>
+<button class="explore-btn" onclick="openPopup('Manali Hill Resort','₹7,500/night')">Reserve Now</button></div>
+
+<div class="card">
+<img src="images/h5.jpg">
+<h3>Ooty Lake Resort</h3>
+<p>₹5,500/night • ⭐⭐⭐⭐</p><br>
+<p>"Lake view and cool weather."</p><br>
+<button class="explore-btn" onclick="openPopup('Ooty Lake Resort','₹5,500/night')">Reserve Now</button></div>
+
+<div class="card">
+<img src="images/h6.jpg">
+<h3>Munnar Tea Valley Resort</h3>
+<p>₹6,800/night • ⭐⭐⭐⭐</p><br>
+<p>"Tea garden view stay."</p><br>
+<button class="explore-btn" onclick="openPopup('Munnar Tea Valley Resort','₹6,800/night')">Reserve Now</button></div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ROYAL HOTELS -->
+<section id="royal" class="hotel-list">
+<h2>Jaipur, Udaipur & Royal Palace Hotels</h2>
+<div class="horizontal-scroll">
+
+<div class="card-container">
+
+<div class="card">
+<img src="images/h7.jpg">
+<h3>Jaipur Palace Hotel</h3>
+<p>₹12,000/night • ⭐⭐⭐⭐⭐</p><br>
+<p>"Live like a king."</p><br>
+<button class="explore-btn" onclick="openPopup('Jaipur Palace Hotel','₹12,000/night')">Reserve Now</button></div>
+
+<div class="card">
+<img src="images/h8.jpg">
+<h3>Udaipur Lake Palace</h3>
+<p>₹14,000/night • ⭐⭐⭐⭐⭐</p><br>
+<p>"Romantic royal stay."</p><br>
+<button class="explore-btn" onclick="openPopup('Udaipur Lake Palace','₹14,000/night')">Reserve Now</button></div>
+
+<div class="card">
+<img src="images/h9.jpg">
+<h3>Mysore Royal Residency</h3>
+<p>₹9,500/night • ⭐⭐⭐⭐</p><br>
+<p>"Near Mysore Palace."</p><br>
+<button class="explore-btn" onclick="openPopup('Mysore Royal Residency','₹9,500/night')">Reserve Now</button></div>
+
+</div>
+</section>
+
+<!-- CITY HOTELS -->
+<section id="city" class="hotel-list">
+<h2>Bangalore , Mumbai & City Hotels</h2>
+<div class="horizontal-scroll">
+
+<div class="card-container">
+
+<div class="card">
+<img src="images/h10.jpg">
+<h3>Bangalore Grand Hotel</h3>
+<p>₹6,000/night • ⭐⭐⭐⭐</p><br>
+<p>"In the heart of city."</p><br>
+<button class="explore-btn" onclick="openPopup('Bangalore Grand Hotel','₹6,000/night')">Reserve Now</button>
+</div>
+
+<div class="card">
+<img src="images/h11.jpg">
+<h3>Mumbai Sea View Hotel</h3>
+<p>₹8,500/night • ⭐⭐⭐⭐</p><br>
+<p>"City + Sea view."</p><br>
+<button class="explore-btn" onclick="openPopup('Mumbai Sea View Hotel','₹8,500/night')">Reserve Now</button>
+</div>
+
+<div class="card">
+<img src="images/h12.jpg">
+<h3>Delhi City Palace Hotel</h3>
+<p>₹7,000/night • ⭐⭐⭐⭐</p><br>
+<p>"Close to attractions."</p><br>
+<button class="explore-btn" onclick="openPopup('Delhi City Palace Hotel','₹7,000/night')">Reserve Now</button></div>
+
+</div>
+
+</div>
+</section>
+
+<!-- NATURE HOTELS -->
+<section id="nature" class="hotel-list">
+<h2>Coorg, Meghalaya & Nature Resorts</h2>
+<div class="horizontal-scroll">
+
+<div class="card-container">
+
+<div class="card">
+<img src="images/h13.jpg">
+<h3>Coorg Jungle Resort</h3>
+<p>₹6,500/night • ⭐⭐⭐⭐</p><br>
+<p>"Stay inside nature."</p><br>
+<button class="explore-btn" onclick="openPopup('Coorg Jungle Resort','₹6,500/night')">Reserve Now</button></div>
+
+<div class="card">
+<img src="images/h14.jpg">
+<h3>Meghalaya Hills Resort</h3>
+<p>₹7,200/night • ⭐⭐⭐⭐</p><br>
+<p>"Waterfalls and hills."</p><br>
+<button class="explore-btn" onclick="openPopup('Meghalaya Hills Resort','₹7,200/night')">Reserve Now</button></div>
+
+<div class="card">
+<img src="images/h15.jpg">
+<h3>Lambasingi Nature Stay</h3>
+<p>₹5,000/night • ⭐⭐⭐</p><br>
+<p>"Cold place stay."</p><br>
+<button class="explore-btn" onclick="openPopup('Lambasingi Nature Stay','₹5,000/night')">Reserve Now</button>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+<h2>What Our Customers Say</h2>
+
+<div class="review-box">
+<p>"Amazing hotel booking experience. Everything was smooth and easy!"</p>
+<h4>— Priya, Chennai</h4>
+</div>
+
+<div class="review-box">
+<p>"Best travel website I’ve used. Hotels were exactly as shown."</p>
+<h4>— Rahul, Bangalore</h4>
+</div>
+
+<div class="review-box">
+<p>"Loved the planner and hotel suggestions. Very helpful!"</p>
+<h4>— Sneha, Mumbai</h4>
+</div>
+
+</section>
+
+<div id="bookingPopup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2>Hotel Booking</h2>
+
+    <form onsubmit="confirmBooking(event)">
+      <label>Hotel</label>
+      <input type="text" id="hotelName" readonly>
+
+      <label>Price</label>
+      <input type="text" id="hotelPrice" readonly>
+
+      <label>Name</label>
+      <input type="text" id="custName" required>
+
+      <label>Email</label>
+      <input type="email" id="custEmail" required>
+
+      <label>Check-in Date</label>
+      <input type="date" id="checkin" required>
+
+      <label>Check-out Date</label>
+      <input type="date" id="checkout" required>
+
+      <button type="submit" class="book-btn">Confirm Booking</button>
+    </form><br>
+
+    <p id="successMsg" style="color: green; display: none;">
+      Booking Confirmed! We will contact you soon.
+    </p>
+  </div>
+</div>
+
+
+<footer class="footer">
+<div class="footer-container">
+
+<div class = "footer-section">
+<h3>TripCanvas</h3>
+<p>Your trusted partner for planning memorable trips across India and the World.</p>
+</div>
+<div class="footer-section">
+<h3>Quick Links</h3>
+<a href="travel1.html">Home</a><br>
+<a href="destinations1.html">Destinations</a><br>
+<a href="hotels1.html">Hotels</a><br>
+<a href="planner1.html">Trip Planner</a><br>
+<a href="about.html">About</a></br>
+<a href="contact1.html">Contact</a>
+</div>
+
+<div class="footer-section">
+<h3>Contact Us</h3>
+<p>📍Bangalore,India</p>
+<p>📞 +91 98765 43210</p>
+<p>📧 tripCanvas@gmail.com</p>
+</div>
+
+</div>
+
+<p class="copyright">© 2026 TripCanvas | All Rights Reserved </p>
+</footer>
+
+
+<script>
+function scrollToSection(sectionId) {
+    // Hide all hotel sections first
+    var sections = document.querySelectorAll(".hotel-list");
+    sections.forEach(function(section) {
+        section.style.display = "none";
+    });
+
+    // Show the clicked section
+    var selectedSection = document.getElementById(sectionId);
+    selectedSection.style.display = "block";
+    // Scroll to it
+    selectedSection.scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+// Card animation on scroll
+window.addEventListener("scroll", function() {
+  let cards = document.querySelectorAll(".card");
+  let screenPosition = window.innerHeight / 1.2;
+
+  cards.forEach(function(card) {
+    let cardPosition = card.getBoundingClientRect().top;
+
+    if(cardPosition < screenPosition) {
+      card.classList.add("show");
+    }
+  });
+});
+
+function openPopup(hotel, price) {
+  document.getElementById("bookingPopup").style.display = "flex";
+  document.getElementById("hotelName").value = hotel;
+  document.getElementById("hotelPrice").value = price;
+}
+
+function closePopup() {
+  document.getElementById("bookingPopup").style.display = "none";
+}
+
+function confirmBooking(event) {
+  event.preventDefault(); // stop form reload
+
+  // Get values
+  let hotel = document.getElementById("hotelName").value;
+  let price = document.getElementById("hotelPrice").value;
+  let name = document.getElementById("custName").value.trim();
+  let email = document.getElementById("custEmail").value.trim();
+  let checkin = document.getElementById("checkin").value;
+  let checkout = document.getElementById("checkout").value;
+
+  // ===== VALIDATION FIRST =====
+  if (name.length < 3) {
+    alert("Name must be at least 3 characters!");
+    return;
+  }
+
+  if (!email.includes("@")) {
+    alert("Enter valid email!");
+    return;
+  }
+
+  if (new Date(checkout) <= new Date(checkin)) {
+    alert("Check-out date must be after check-in date!");
+    return;
+  }
+
+  // ===== STORE DATA =====
+  localStorage.setItem("hotel", hotel);
+  localStorage.setItem("price", price);
+  localStorage.setItem("name", name);
+  localStorage.setItem("email", email);
+  localStorage.setItem("checkin", checkin);
+  localStorage.setItem("checkout", checkout);
+
+  // ===== REDIRECT LAST =====
+  window.location.href = "hbooking.html";
+}
+
+window.onscroll = function() {
+  let btn = document.getElementById("topBtn");
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+function logout(){
+  localStorage.removeItem("loggedInUser");
+
+  // hide profile again
+  document.querySelector(".profile-container").style.display = "none";
+
+  alert("Logged out!");
+  location.href="travel1.html";
+}
+
+function toggleProfile(){
+  let dropdown = document.getElementById("profileDropdown");
+  dropdown.style.display = 
+    dropdown.style.display === "block" ? "none" : "block";
+}
+
+window.onload = function(){
+  let user = localStorage.getItem("loggedInUser");
+
+  if(user){
+    // SHOW profile
+    document.querySelector(".profile-container").style.display = "block";
+
+    // Set first letter
+    let firstLetter = user.charAt(0).toUpperCase();
+    document.getElementById("profileCircle").innerText = firstLetter;
+
+    // Show email
+    document.getElementById("userEmailDisplay").innerText = user;
+  }
+};
+
+
+</script>
+
+<button onclick="scrollToTop()" id="topBtn">↑</button>
+
+</body>
+</html>
+
+
+
+
+

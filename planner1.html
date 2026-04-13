@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title> TripCanvas </title>
+
+<link rel="stylesheet" href="style.css">
+
+<!----Favicon--->
+<link rel="icon" type="image/png" href="images/logo.png">
+<link href='https://fonts.googleapis.com/css?family=Metal' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet'>
+
+
+</head>
+
+<body class="planner-page">
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" class="nav-logo">
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="nav-links" id="navLinks">
+    <a href="travel1.html">🏡Home</a>
+    <a href="#" onclick="goToDestinations()">🗺️Destinations</a>
+    <a href="#" onclick="goToHotels()">🍽️Hotels</a>
+    <a href="#" onclick="goToPlanner()">🗓️Trip Planner</a>
+    <a href="about.html">About</a>
+    <a href="contact1.html">📞Contact</a>
+  </nav>
+
+  <!-- Right side: hamburger + profile -->
+  <div class="nav-right">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="profile-container" onclick="toggleProfile()">
+    <div class="profile-circle" id="profileCircle"></div>
+      <div class="profile-dropdown" id="profileDropdown">
+      <p id="userEmailDisplay"></p>
+      <a href="#" onclick="logout()">Logout</a>
+  </div>
+</div>
+  </div>
+</header>
+
+<div class="hero-text">
+<h2>Enjoy your Trip</h2>
+</div>
+
+<!--------------------Ooty details-------------------->
+<section id="ooty" class="trip-section">
+<h2>Ooty – Queen of Hill Stations</h2>
+
+<p>
+Ooty, located in the Nilgiri Hills of Tamil Nadu, is famous for its cool climate,
+tea plantations, mountains, and scenic beauty. It is one of the most popular hill
+stations in India.
+</p>
+
+<h2 class="section-title">Nature & Hills</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/doddabetta.jpg">
+<h4>Doddabetta Peak</h4>
+<p>The highest mountain in the Nilgiri Hills offering a beautiful panoramic view.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/tea.jpg">
+<h4>Tea Gardens</h4>
+<p>Ooty is famous for its tea plantations and scenic green landscapes.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/botanical.jpg">
+<h4>Botanical Garden</h4>
+<p>Heart of Ooty-A large garden with rare plants and beautiful flowers.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Lakes & Views</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/lake.jpg">
+<h4>Ooty Lake</h4>
+<p>Popular place for boating and relaxing.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/pykara.jpg">
+<h4>Pykara Lake</h4>
+<p>A peaceful lake surrounded by forest and waterfalls.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/nilgiri.jpg">
+<h4>Nilgiri Mountain Railway</h4>
+<p>A UNESCO heritage toy train ride through mountains and tunnels.</p>
+</div>
+
+</div>
+
+<p><b>Best Time to Visit:</b> October to June</p>
+<p><b>Ideal Trip Duration:</b> 3-4 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Ooty'">Book this Trip</button>
+</div>
+</section>
+
+<!--------------Alleppey details------------->
+<section id="alleppey" class="trip-section">
+<h2>Alleppey – The Backwater Paradise</h2>
+
+<p>
+Alleppey (Alappuzha) is famous for its beautiful backwaters, houseboat cruises,
+beaches, and peaceful village life. It is one of the most relaxing tourist
+destinations in Kerala.
+</p>
+
+<!-- Backwaters -->
+<h2 class="section-title">Backwaters</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/backwaters.jpg">
+<h4>Alleppey Backwaters</h4>
+<p>Famous for scenic canals, lagoons, and boat cruises.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/house.jpg">
+<h4>Houseboat Stay</h4>
+<p>Enjoy a peaceful stay in traditional Kerala houseboats.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/bird.jpg">
+<h4>Kumarakom Bird Sanctuary</h4>
+<p>A beautiful place for bird watching and nature lovers.</p>
+</div>
+
+</div>
+
+<!-- Beaches & Village Life -->
+<h2 class="section-title">Beaches & Village Life</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/beach.jpg">
+<h4>Alappuzha Beach</h4>
+<p>A calm beach with a historic pier and lighthouse.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/marari.jpg">
+<h4>Marari Beach</h4>
+<p>A peaceful beach known for its natural beauty.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/canoe.jpg">
+<h4>Village Canoe Ride</h4>
+<p>Experience Kerala village life through canoe rides.</p>
+</div>
+
+</div>
+
+<p><b>Best Time to Visit:</b> November to February</p>
+<p><b>Ideal Trip Duration:</b> 3-4 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Alleppey'">Book this Trip</button>
+</div>
+
+</section>
+
+<!-------------Munnar details--------------->
+
+<section id="munnar" class="trip-section">
+<h2>Munnar – The Tea Garden Hills</h2>
+
+<p>
+Munnar is a renowned hill station in Kerala's Idukki district, perched at 1,600 meters in the Western Ghats, celebrated for its vast, rolling tea plantations, mist-covered hills, and British colonial charm.It is a popular, scenic escape known for its cool climate, waterfalls, and panoramic viewpoints like Top Station.
+</p>
+
+<h2 class="section-title">Tea Plantations</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/teagarden.jpg">
+<h4>Tea Gardens</h4>
+<p>Beautiful green tea plantations covering the hills.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/eravikulam.jpg">
+<h4>Eravikulam National Park</h4>
+<p>Home to the rare Nilgiri Tahr mountain goat.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/anamudi.jpg">
+<h4>Anamudi Peak</h4>
+<p>The highest peak in South India.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Waterfalls & Dams</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/mattupetty.jpg">
+<h4>Mattupetty Dam</h4>
+<p>A scenic dam surrounded by hills.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/attukal.jpg">
+<h4>Attukal Waterfalls</h4>
+<p>A beautiful waterfall between hills.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/echo.jpg">
+<h4>Echo Point</h4>
+<p>A famous spot where your voice echoes.</p>
+</div>
+
+</div>
+
+<p><b>Best Time to Visit:</b> September to March</p>
+<p><b>Ideal Trip Duration:</b> 3-4 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Munnar'">Book this Trip</button>
+</div>
+
+</section>
+
+<!-------------coorg details---------------->
+
+<section id="coorg" class="trip-section">
+<h2>Coorg – The Scotland of India</h2>
+
+<p>
+Coorg, or Kodagu, is a breathtaking, small district in Karnataka's Western Ghats, often called the "Scotland of India" for its rolling hills, dense forests, and misty landscapes.Famous for its extensive coffee and spice plantations, it is a biodiversity hotspot offering a cool climate, rich Kodava culture, and popular attractions like Abbey Falls and Nagarhole National Park
+</p>
+
+<h2 class="section-title">Nature & Waterfalls</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/abbey.jpg">
+<h4>Abbey Falls</h4>
+<p>A beautiful waterfall surrounded by coffee plantations.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/raja.jpg">
+<h4>Raja’s Seat</h4>
+<p>A scenic viewpoint with sunset views.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/nisargadhama.jpg">
+<h4>Nisargadhama</h4>
+<p>An island with forest and bamboo trees.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Wildlife & Temples</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/elephant.jpg">
+<h4>Dubare Elephant Camp</h4>
+<p>Interact and bathe elephants.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/talakaveri.jpg">
+<h4>Talakaveri</h4>
+<p>The origin of River Kaveri.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/coffee.jpg">
+<h4>Coffee Plantations</h4>
+<p>Walk through beautiful coffee estates.</p>
+</div>
+
+</div>
+
+<p><b>Best Time to Visit:</b> October to March</p>
+<p><b>Ideal Trip Duration:</b> 4 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Coorg'">Book this Trip</button>
+</div>
+
+</section>
+
+<!-------------kanyakumari details------------>
+
+<section id="kanyakumari" class="trip-section">
+<h2>Kanyakumari – The Southern Tip of India</h2>
+
+<p>
+Kanyakumari is the southernmost tip of India known for sunrise, sunset, and monuments.Formerly known as Cape Comorin, is a coastal municipality in Tamil Nadu, India.Known as "The Land's End," it is uniquely situated at the confluence of the Arabian Sea, Bay of Bengal, and Indian Ocean.
+</p>
+
+<h2 class="section-title">Monuments</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/vivekananda.jpg">
+<h4>Vivekananda Rock Memorial</h4>
+<p>A famous memorial on a rock island.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/thiruvalluvar.jpg">
+<h4>Thiruvalluvar Statue</h4>
+<p>A giant statue of Tamil poet Thiruvalluvar.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/light.jpg">
+<h4>Light & Sound Show</h4>
+<p>A historical show in the evening.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Beaches & Sunrise</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/kbeach.jpg">
+<h4>Kanyakumari Beach</h4>
+<p>Famous for sunrise and sunset.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/sunset.jpg">
+<h4>Sunset Point</h4>
+<p>A beautiful sunset view point.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/triveni.jpg">
+<h4>Triveni Sangam</h4>
+<p>The meeting point of three seas.</p>
+</div>
+
+</div>
+
+<p><b>Best Time to Visit:</b> October to March</p>
+<p><b>Ideal Trip Duration:</b> 2-3 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Kanyakumari'">Book this Trip</button>
+</div>
+
+</section>
+
+<!--------------Lambasingi details----------->
+
+<section id="lambasingi" class="trip-section">
+<h2>Lambasingi – The Kashmir of Andhra Pradesh</h2>
+
+<p>
+Lambasingi, or Lammasingi, is a serene, high-altitude village in Andhra Pradesh's Eastern Ghats, famously known as the "Kashmir of Andhra Pradesh". Located at 1,000 meters, it is South India's only location with sub-zero winter temperatures, occasional snowfall, and constant mist. It offers scenic coffee/pepper plantations and misty, hilly landscapes.
+</p>
+
+<h2 class="section-title">Nature & Viewpoints</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/lviewpoint.jpg">
+<h4>Lambasingi View Point</h4>
+<p>A foggy viewpoint with beautiful scenery.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/thajangi.jpg">
+<h4>Thajangi Reservoir</h4>
+<p>A peaceful water reservoir surrounded by hills.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/cf.jpg">
+<h4>Coffee Plantations</h4>
+<p>Walk through coffee plantations.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Waterfalls & Trekking</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/kothapalli.jpg">
+<h4>Kothapalli Waterfalls</h4>
+<p>A hidden waterfall in the forest.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/foggy.jpg">
+<h4>Foggy Hills</h4>
+<p>Enjoy fog and cool weather.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/trekking.jpg">
+<h4>Trekking</h4>
+<p>Best place for trekking and camping.</p>
+</div>
+
+</div>
+
+<p><b>Best Time to Visit:</b> November to January</p>
+<p><b>Ideal Trip Duration:</b> 2-3 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Lambasingi'">Book this Trip</button>
+</div>
+
+</section>
+
+<!--------------Mysore details--------------->
+
+<section id="mysore" class="trip-section">
+<h2>Mysore – The Heritage City</h2>
+
+<p>
+Mysore (officially Mysuru), the cultural capital of Karnataka,<b>is a historic city known as the "City of Palaces"</b>. Famous for the magnificent Mysore Palace, royal heritage, Dussehra festival, and serene gardens, it offers a blend of artistic tradition, yoga, and sandalwood/silk industries.</p>
+
+<h2 class="section-title">Palaces & Monuments</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/palace.jpg">
+<h4>Mysore Palace</h4>
+<p>The most famous palace in Karnataka.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/chamundi.jpg">
+<h4>Chamundi Hills</h4>
+<p>A famous hill with Chamundeshwari Temple.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/st.jpg">
+<h4>St. Philomena’s Church</h4>
+<p>A beautiful Gothic style church.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Gardens & Zoo</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/brindavan.jpg">
+<h4>Brindavan Gardens</h4>
+<p>Famous for musical fountain.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/zoo.jpg">
+<h4>Mysore Zoo</h4>
+<p>One of the oldest zoos in India.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/railway.jpg">
+<h4>Railway Museum</h4>
+<p>A museum showing old trains.</p>
+</div>
+
+</div>
+
+<p><b>Best Time to Visit:</b> October to March</p>
+<p><b>Ideal Trip Duration:</b> 1-2 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Mysore'">Book this Trip</button>
+</div>
+
+</section>
+
+<!----------------Bangalore details----------->
+
+<section id="bangalore" class="trip-section">
+<h2>Bangalore – The Silicon Valley of India</h2>
+
+<p>
+Bangalore is the capital of Karnataka and India's leading technology hub.Situated on the Deccan Plateau, it is a bustling, high-altitude metropolis renowned for its pleasant climate, booming IT industry, diverse nightlife, and extensive green spaces like Lalbagh Botanical Garden, often earning it the name "Garden City of India".
+</p>
+<h2 class="section-title">Parks & Nature</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/lalbagh.jpg">
+<h4>Lalbagh Botanical Garden</h4>
+<p>A famous botanical garden.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/cubbon.jpg">
+<h4>Cubbon Park</h4>
+<p>A large green park in the city.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/nandi.jpg">
+<h4>Nandi Hills</h4>
+<p>A popular sunrise viewpoint.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Palaces & Shopping</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/bpalace.jpg">
+<h4>Bangalore Palace</h4>
+<p>A beautiful royal palace.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/vidhana.jpg">
+<h4>Vidhana Soudha</h4>
+<p>The Karnataka State Legislative Building.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/phoenix.jpg">
+<h4>Phoenix Market City (Whitefield)</h4>
+<p>A luxury shopping mall.</p>
+</div>
+
+</div>
+
+<p><b>Best Time to Visit:</b> Throughout the year</p>
+<p><b>Ideal Trip Duration:</b> 3 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Bangalore'">Book this Trip</button>
+</div>
+
+</section>
+
+<!-----------------Manali details-------------->
+
+<section id="manali" class="trip-section">
+<h2>Manali – The Snow Paradise</h2>
+
+<p>
+Manali is one of the most popular hill stations in India, located in the state of Himachal Pradesh.
+Surrounded by snow-covered mountains, lush green valleys, and flowing rivers, Manali is a perfect
+destination for nature lovers and adventure seekers. The place is well known for its scenic beauty,
+pleasant climate, and exciting adventure activities like paragliding, skiing, and river rafting.
+Manali is an ideal destination for family trips, honeymoon trips, and adventure tourism.
+</p></p>
+
+<!-- Iconic Landmarks -->
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/rohtang.jpg">
+<h4>Rohtang Pass</h4>
+<p>Famous snow point with breathtaking mountain views.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/solang.jpg">
+<h4>Solang Valley</h4>
+<p>Popular for snow activities and paragliding.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/hadimba.jpg">
+<h4>Hadimba Temple</h4>
+<p>An ancient temple surrounded by forest.</p>
+</div>
+
+</div>
+
+<!-- Adventure -->
+<h2 class="section-title">Adventure Activities</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/Paragliding.jpg">
+<h4>Paragliding</h4>
+<p>Enjoy flying over the valleys.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/raft.jpg">
+<h4>River Rafting</h4>
+<p>Exciting rafting in Beas River.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/ski.jpg">
+<h4>Skiing</h4>
+<p>Winter skiing in snow-covered mountains.</p>
+</div>
+
+</div>
+
+<!-- Nature -->
+<h2 class="section-title">Nature & Views</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/jogini.jpg">
+<h4>Jogini Waterfalls</h4>
+<p>A scenic waterfall surrounded by hills.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/beas.jpg">
+<h4>Beas River</h4>
+<p>A beautiful river flowing through the valley.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/msan.jpg">
+<h4>Manali Sanctuary</h4>
+<p>A peaceful forest with wildlife.</p>
+</div>
+
+</div>
+
+<p><b>Best Time to Visit:</b> December–February (snow), April–June (pleasant)</p>
+<p><b>Ideal Trip Duration:</b> 3–5 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Manali'">Book this Trip</button>
+</div>
+
+</section>
+
+<!-------------Goa details------------------->
+
+<section id="goa" class="trip-section">
+<h2>Goa – The Beach Paradise</h2>
+
+<p>
+Goa is India’s most famous beach destination, known for its golden beaches, Portuguese heritage, seafood, and relaxed lifestyle. It is the perfect destination for people who love beaches, sunsets, and coastal culture.
+</p>
+
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/baga.jpg">
+<h4>Baga Beach</h4>
+<p>A famous beach known for nightlife and activities.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/bom.jpg">
+<h4>Basilica of Bom Jesus</h4>
+<p>A historic church and UNESCO World Heritage site.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/aguada.jpg">
+<h4>Fort Aguada</h4>
+<p>A historic fort with a beautiful sea view.</p>
+</div>
+</div>
+
+<h2 class="section-title">Beaches & Culture</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/calangute.jpg">
+<h4>Calangute Beach</h4>
+<p>One of the most popular beaches in Goa.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/panjim.jpg">
+<h4>Panjim City</h4>
+<p>Colorful Portuguese-style streets and cafes.</p>
+</div>
+</div>
+
+<h2 class="section-title">Food & Cruise Experience</h2>
+<div class="landmark-cards">
+<div class="landmark-card">
+<img src="images/goan.jpeg">
+<h4>Goan Seafood</h4>
+<p>Goa is famous for its seafood and coastal cuisine.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/cruise.jpg">
+<h4>Mandovi River Cruise</h4>
+<p>A relaxing evening cruise with music and dinner.</p>
+</div>
+</div>
+
+<br><br>
+<p><b>Best Time to Visit:</b> November to February</p>
+<p><b>Ideal Trip Duration:</b> 3–5 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Goa'">Book this Trip</button>
+</div>
+</section>
+
+<!----------------agra details----------------->
+
+<section id="agra" class="trip-section">
+<h2>Agra – The City of the Taj</h2>
+
+<p>
+Agra is one of the most historically significant cities in India, located in the state of Uttar Pradesh. The city is world-famous for the Taj Mahal, a symbol of love and one of the Seven Wonders of the World. Agra showcases the grandeur of the Mughal Empire through its magnificent forts, gardens, and architectural masterpieces. It is a perfect destination for history lovers and people interested in architecture and heritage.
+</p>
+
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/taj.jpg">
+<h4>Taj Mahal</h4>
+<p>The world-famous symbol of love built by Shah Jahan.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/afort.jpg">
+<h4>Agra Fort</h4>
+<p>A massive red sandstone fort and UNESCO World Heritage site.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/fatehpur.jpg">
+<h4>Fatehpur Sikri</h4>
+<p>A historic Mughal city with palaces and courtyards.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Mughal Architecture & Heritage</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/mehtab.jpg">
+<h4>Mehtab Bagh</h4>
+<p>A beautiful garden offering a stunning view of the Taj Mahal at sunset.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/itimad.jpg">
+<h4>Itimad-ud-Daulah</h4>
+<p>Known as the Baby Taj, famous for marble inlay work.</p>
+</div>
+
+</div>
+
+<br><br>
+<p><b>Best Time to Visit:</b> October to March</p>
+<p><b>Ideal Trip Duration:</b> 2–3 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Agra'">Book this Trip</button>
+</div>
+
+</section>
+
+<!----------------meghalaya details----------------------->
+
+<section id="meghalaya" class="trip-section">
+<h2>Meghalaya – The Abode of Clouds</h2>
+
+<p>
+Meghalaya is one of the most scenic states in Northeast India, known for its misty hills, waterfalls, crystal-clear rivers, and living root bridges. The natural beauty of Meghalaya makes it a paradise for nature lovers and photographers. The cool climate, green valleys, and peaceful environment make it a perfect escape from busy city life.
+</p>
+
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/cherrapunji.jpg">
+<h4>Cherrapunji</h4>
+<p>One of the wettest places on Earth, known for its waterfalls.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/root.jpg">
+<h4>Living Root Bridges</h4>
+<p>Natural bridges formed from tree roots over rivers.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/dawki.jpg">
+<h4>Dawki River</h4>
+<p>A crystal-clear river where boats look like they are floating in air.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Waterfalls & Nature</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/nohkalikai.jpg">
+<h4>Nohkalikai Falls</h4>
+<p>India’s tallest plunge waterfall with breathtaking views.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/shillong.jpg">
+<h4>Shillong</h4>
+<p>A beautiful hill station known as the Scotland of the East.</p>
+</div>
+
+</div>
+
+<br><br>
+<p><b>Best Time to Visit:</b> October to April</p>
+<p><b>Ideal Trip Duration:</b> 4–5 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Meghalaya'">Book this Trip</button>
+</div>
+
+</section>
+
+<!-----------------Jaipur details------------------->
+
+<section id="jaipur" class="trip-section">
+<h2>Jaipur – The Pink City</h2>
+
+<p>
+Jaipur, the capital city of Rajasthan, is known as the Pink City because of its beautiful pink-colored buildings. The city is famous for its royal palaces, historic forts, colorful markets, and rich Rajasthani culture. Jaipur offers a perfect blend of history, architecture, and tradition.
+</p>
+
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/hawa.jpg">
+<h4>Hawa Mahal</h4>
+<p>The Palace of Winds known for its unique architecture.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/amber.jpg">
+<h4>Amber Fort</h4>
+<p>A majestic fort known for its grand structure and history.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/cpalace.jpg">
+<h4>City Palace</h4>
+<p>A royal palace located in the heart of Jaipur.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Royal Palaces & Architecture</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/jantar.jpg">
+<h4>Jantar Mantar</h4>
+<p>An ancient astronomical observatory and UNESCO site.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/jal.jpg">
+<h4>Jal Mahal</h4>
+<p>A palace located in the middle of Man Sagar Lake.</p>
+</div>
+
+</div>
+
+<br><br>
+<p><b>Best Time to Visit:</b> October to March</p>
+<p><b>Ideal Trip Duration:</b> 2–3 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Jaipur'">Book this Trip</button>
+</div>
+
+</section>
+
+<!---------------Udaipur details--------------->
+
+<section id="udaipur" class="trip-section">
+<h2>Udaipur – The City of Lakes</h2>
+
+<p>
+Udaipur is one of the most beautiful and romantic cities in India, known for its stunning lakes, royal palaces, and peaceful atmosphere. Surrounded by the Aravalli Hills, Udaipur offers beautiful sunset views, boat rides, and heritage hotels.
+</p>
+
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/cupalace.jpg">
+<h4>City Palace(Udaipur)</h4>
+<p>A grand palace complex overlooking Lake Pichola.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/pichola.jpg">
+<h4>Lake Pichola</h4>
+<p>A beautiful lake famous for boat rides and sunset views.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/jag.jpg">
+<h4>Jag Mandir</h4>
+<p>A palace located in the middle of the lake.</p>
+</div>
+
+</div>
+
+<h2 class="section-title">Lakes & Palaces</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images/fateh.jpg">
+<h4>Fateh Sagar Lake</h4>
+<p>A peaceful lake surrounded by hills.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images/saheliyon.jpg">
+<h4>Saheliyon Ki Bari</h4>
+<p>A historic garden with fountains and marble pavilions.</p>
+</div>
+
+</div>
+
+<br><br>
+<p><b>Best Time to Visit:</b> September to March</p>
+<p><b>Ideal Trip Duration:</b> 2–3 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Udaipur'">Book this Trip</button>
+</div>
+
+</section>
+
+<!-------------Paris details---------------->
+
+<section id="paris" class="trip-section">
+<h2>Paris – The City of Lights</h2>
+
+<p>
+Paris, the capital of France and <b>renowned "City of Light" or "City of Love,"</b>
+is a top global destination offering unparalleled romance, world-class art, and iconic architecture. 
+Visitors are drawn to masterpieces at the Louvre, panoramic views from the Eiffel Tower, 
+and charming streets in Montmartre.
+</p>
+
+<!-- Iconic Landmarks -->
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\eiffel.jpg">
+<h4>Eiffel Tower</h4>
+<p>The most famous landmark of Paris offering breathtaking city views.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\arc.jpg">
+<h4>Arc de Triomphe</h4>
+<p>A monumental arch honoring French soldiers, offering a stunning panoramic view of Paris.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\notre.jpg">
+<h4>Notre-Dame Cathedral</h4>
+<p>A masterpiece of French Gothic architecture known for its history and stained-glass windows.</p>
+</div>
+
+</div>
+
+<!-- Art & Culture -->
+<h2 class="section-title">Art & Culture</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\louvre.jpg">
+<h4>Louvre Museum</h4>
+<p>The world’s largest art museum, famous for the Mona Lisa and historic artworks.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\musee.jpg">
+<h4>Musée d'Orsay</h4>
+<p>A museum featuring Impressionist paintings by Monet and Van Gogh.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\montmartre.jpg">
+<h4>Montmartre</h4>
+<p>A charming artistic district known for street artists and cafés.</p>
+</div>
+
+</div>
+
+<!-- Atmosphere & Dining -->
+<h2 class="section-title">Atmosphere & Dining</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\seine.jpg">
+<h4>Seine River Cruise</h4>
+<p>A relaxing cruise offering beautiful views of Paris landmarks.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\cafe.jpg">
+<h4>Sidewalk Cafés</h4>
+<p>Experience Paris life by relaxing in cozy street cafés.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\gourmet.jpg">
+<h4>French Gourmet Dining</h4>
+<p>Enjoy world-class French cuisine, desserts, and fine wines.</p>
+</div>
+
+</div>
+
+<br><br>
+
+<p><b>Best Time to Visit:</b> April to June, September to October</p>
+<p><b>Ideal Trip Duration:</b> 4–5 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Paris'">Book this Trip</button>
+</div>
+
+</section>
+
+<!---------------------Bali Details----------------------------->
+
+<section id="bali" class="trip-section">
+<h2>Bali – Island of the Gods</h2>
+
+<p>
+Bali, Indonesia's premier tourist destination, is <b>a captivating island known as the "Island of the Gods."</b>l It seamlessly blends vibrant Hindu culture, stunning beaches, and lush jungles. Famous for its dramatic temples, vibrant nightlife, world-class surfing, and serene yoga retreats, Bali offers a mix of spirituality and adventure for every traveler.
+</p>
+
+<!-- Iconic Landmarks -->
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\tanah.jpg">
+<h4>Tanah Lot Temple</h4>
+<p>A must-see sea temple perched on a rock formation, famous for sunset views.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\tegalalang.jpg">
+<h4>Tegalalang Rice Terraces</h4>
+<p> Iconic, cascading green rice fields in Ubud.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\ubud.jpg">
+<h4>Ubud Monkey Forest</h4>
+<p>Known as the "Mother Temple," located on the slopes of Mount Agung.</p>
+</div>
+
+</div>
+
+<!-- Activities -->
+<h2 class="section-title">Beaches & water Sports</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\canggu.jpg">
+<h4>Surfing hubs of Canggu and Kuta</h4>
+<p>The world’s largest art museum, famous for the Mona Lisa and historic artworks.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\nusa.jpg">
+<h4>Luxury resorts of Nusa Dua.</h4>
+<p>A museum featuring Impressionist paintings by Monet and Van Gogh.</p>
+</div>
+
+</div>
+
+<!--Culture & Experiences-->
+<h2 class="section-title">Culture & Experience</h2>
+
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\temple.jpg">
+<h4>Bali Temples</h4>
+<p>Explore ancient temples showcasing rich Balinese traditions and architecture.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\dance.jpg">
+<h4>Traditional Dance</h4>
+<p>Enjoy vibrant cultural dance performances like Kecak and Barong.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\spa.jpg">
+<h4>Spa & Wellness</h4>
+<p>Relax with world-famous Balinese spa and massage therapies.</p>
+</div>
+
+</div>
+
+<br><br>
+
+<p><b>Best Time to Visit:</b> April to October</p>
+<p><b>Ideal Trip Duration:</b> 4–6 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Bali'">Book this Trip</button>
+</div>
+
+</section>
+
+<!-------------------NewYork Details--------------------------->
+
+
+<section id="newyork" class="trip-section">
+<h2>New York City – Big Apple </h2>
+
+<p>
+New York City is a premier global destination, <b> known as the "Big Apple," </b>  offering an unmatched blend of iconic landmarks, world-class culture, diverse neighborhoods, and unmatched dining. As a vibrant, constantly evolving metropolis, it features attractions like Times Square, Central Park, Broadway, and museums, catering to every kind of adventurer and traveler.
+</p>
+
+<!-- Iconic Landmarks -->
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\statue.jpg">
+<h4>The Statue of Liberty</h4>
+<p>The symbol of freedom and one of the most famous landmarks in the world.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\square.jpg">
+<h4>Times Square</h4>
+<p> Known for bright lights, shopping, and entertainment.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\Brooklyn.jpg">
+<h4>Brooklyn Bridge</h4>
+<p>An iconic New York City landmark bridging the East River, connecting Manhattan and Brooklyn.</p>
+</div>
+
+</div>
+
+<!-- Cullture & Entertainment ---->
+<h2 class="section-title">Cullture & Entertainment</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\bright.jpg">
+<h4>The Bright lights of Broadway</h4>
+<p> often referred to as the <b> "Great White Way," </b> represent the dazzling, electric heart of New York City's theater district, centered around Times Square in Midtown Manhattan. </p>
+</div>
+
+<div class="landmark-card">
+<img src="images\Met.jpg">
+<h4>The Met and MoMA</h4>
+<p>The Met, a massive, classical museum, spans 5,000 years of global art, including Egyptian, Classical, and European masterpieces. Conversely, MoMA is a smaller, modern-focused gallery highlighting art from the late 19th century to the present, including iconic modern paintings and design. </p>
+</div>
+
+</div>
+
+<!--Dining and Sightseeing-->
+<h2 class="section-title">Dining & Sightseeing</h2>
+
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\park.jpg">
+<h4>Central Park</h4>
+<p>A huge park in the middle of the city perfect for relaxing and walking.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\hudson.jpg">
+<h4>Hudson River</h4>
+<p>Are renowned for offering scenic views of the Catskill Mountains, historic 19th-century lighthouses (like Rondout and Esopus Meadows), and luxurious Gilded Age estates.</p>
+</div>
+
+
+</div>
+
+<br><br>
+
+<p><b>Best Time to Visit:</b> April to June and September to November</p>
+<p><b>Ideal Trip Duration:</b> 4–5 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=New York'">Book this Trip</button>
+</div>
+
+</section>
+
+<!-------------------Tokyo details------------------>
+
+<section id="tokyo" class="trip-section">
+<h2>Tokyo – The Land of Technology & Tradition</h2>
+
+<p>
+Tokyo, the capital of Japan, is famous for its modern technology, ancient temples,
+anime culture, shopping streets, and beautiful cherry blossoms.</p>
+
+<!-- Iconic Landmarks -->
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\senso.jpg">
+<h4>Senso-ji Temple</h4>
+<p>Tokyo's oldest and most iconic Buddhist temple, recognized by its massive Thunder Gate and traditional shopping street, Nakamise.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\mount.jpg">
+<h4>Mount Fuji</h4>
+<p>Japan’s most famous mountain and scenic desination..</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\shibuya.jpg">
+<h4>Shibuya Crossing</h4>
+<p>Known as the world's busiest pedestrian crossing, it is a bustling, neon-lit symbol of modern Tokyo.</p>
+</div>
+
+</div>
+
+<!-- Sightseeing -->
+<h2 class="section-title">Sightseeing Places</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\skytree.jpg">
+<h4>Tokyo Skytree</h4>
+<p>At 634 meters, this is Japan's tallest structure, offering panoramic views of the entire metropolitan area.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\ipalace.jpg">
+<h4>Imperial Palace</h4>
+<p>A museum featuring Impressionist paintings by Monet and Van Gogh.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\shinjuku.jpg">
+<h4>Shinjuku Gyoen National Garden</h4>
+<p>A large park that blends Japanese, English, and French garden styles.</p>
+</div>
+
+</div>
+
+<br><br>
+
+<p><b>Best Time to Visit:</b>March to May, September to November</p>
+<p><b>Ideal Trip Duration:</b> 5–6 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Tokyo'">Book this Trip</button>
+</div>
+
+</section>
+
+
+<!-------------------Rome details------------------>
+
+<section id="rome" class="trip-section">
+<h2>Rome – The Eternal City</h2>
+
+<p>
+Rome, the "Eternal City" and cradle of Western civilization, is an open-air museum blending ancient ruins, Baroque art, and vibrant culture.</p>
+
+<!-- Iconic Landmarks -->
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\colosseum.jpg">
+<h4>Colosseum</h4>
+<p>An ancient amphitheater and one of the greatest Roman structures.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\vatican.jpg">
+<h4>Vatican City</h4>
+<p>Home to St. Peter’s Basilica and the Pope.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\trevi.jpg">
+<h4>Trevi Fountain</h4>
+<p>Known as the world's busiest pedestrian crossing, it is a bustling, neon-lit symbol of modern Tokyo.</p>
+</div>
+
+</div>
+
+<!-- Neighborhoods & Views -->
+<h2 class="section-title">Neighborhoods & Views</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\trastevere.jpg">
+<h4>Trastevere</h4>
+<p>Charming, bohemian neighborhood known for nightlife and food.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\castel.jpg">
+<h4>Castel Sant’Angelo</h4>
+<p>Hadrian’s mausoleum, now a museum.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\aventine.jpg">
+<h4>Aventine Keyhole</h4>
+<p>Secret view of St. Peter's.</p>
+</div>
+
+</div>
+
+<br><br>
+
+<p><b>Best Time to Visit:</b> April to June, September to October</p>
+<p><b>Ideal Trip Duration:</b> 3–4 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Rome'">Book this Trip</button>
+</div>
+
+</section>
+
+<!------------------Switzerland details------------------>
+
+<section id="switzerland" class="trip-section">
+<h2>Switzerland – The Land of Alps </h2>
+
+<p>
+Switzerland is famous for its snowy mountains, scenic train rides, lakes,
+chocolates, and peaceful villages. It is one of the most beautiful countries in Europe..</p>
+
+<!-- Iconic Landmarks -->
+<h2 class="section-title">Iconic Landmarks</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\swiss.jpg">
+<h4>Swiss Alps</h4>
+<p>Famous for snow, skiing, and breathtaking scenery.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\geneva.jpg">
+<h4>Lake Geneva</h4>
+<p>A beautiful lake surrounded by mountains.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\jung.jpg">
+<h4>Jungfraujoch</h4>
+<p>Known as the “Top of Europe”.</p>
+</div>
+
+</div>
+
+<!-- Cultural & Historic Sites -->
+<h2 class="section-title">Cultural & Historic Sites</h2>
+<div class="landmark-cards">
+
+<div class="landmark-card">
+<img src="images\bellinzona.jpg">
+<h4>Castles of Bellinzona</h4>
+<p> Medieval fortresses.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\bern.jpg">
+<h4>Old Town of Bern</h4>
+<p>UNESCO world heritage site.</p>
+</div>
+
+<div class="landmark-card">
+<img src="images\grimsel.jpg">
+<h4>Grimsel Valley</h4>
+<p>Hydropower dams and scenic passes.</p>
+</div>
+
+</div>
+
+<br><br>
+
+<p><b>Best Time to Visit:</b>April to June, December to March</p>
+<p><b>Ideal Trip Duration:</b>5–6 Days</p>
+
+<div class="book-btn-container">
+<button class="explore-btn" onclick="window.location.href='dbooking.html?trip=Switzerland'">Book this Trip</button>
+</div>
+
+</section>
+
+
+<script>
+
+window.onscroll = function() {
+  let btn = document.getElementById("topBtn");
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+function logout(){
+  localStorage.removeItem("loggedInUser");
+
+  // hide profile again
+  document.querySelector(".profile-container").style.display = "none";
+
+  alert("Logged out!");
+  location.href="travel1.html";
+}
+
+function toggleProfile(){
+  let dropdown = document.getElementById("profileDropdown");
+  dropdown.style.display = 
+    dropdown.style.display === "block" ? "none" : "block";
+}
+
+window.onload = function(){
+  let user = localStorage.getItem("loggedInUser");
+
+  if(user){
+    // SHOW profile
+    document.querySelector(".profile-container").style.display = "block";
+
+    // Set first letter
+    let firstLetter = user.charAt(0).toUpperCase();
+    document.getElementById("profileCircle").innerText = firstLetter;
+
+    // Show email
+    document.getElementById("userEmailDisplay").innerText = user;
+  }
+};
+
+
+</script>
+
+<button onclick="scrollToTop()" id="topBtn">↑</button>
+
+</body>
+</html>
+
+
+
+
+
+

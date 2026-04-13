@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmation</title>
+
+<!-- Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Metal' rel='stylesheet'>
+
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+/* 🌌 Background */
+body{
+  margin:0;
+  padding:0;
+  font-family: Oregano;
+  background: linear-gradient(to right, #141e30, #243b55);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* 🎟️ Ticket */
+.ticket{
+  background:white;
+  padding:40px;
+  width:400px;
+  max-width:90%;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  position:relative;
+  margin: 0 auto;
+}
+
+/* Ticket cut effect */
+.ticket::before,
+.ticket::after{
+  content:"";
+  position:absolute;
+  width:40px;
+  height:40px;
+  background:#141e30;
+  border-radius:50%;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.ticket::before{ left:-20px; }
+.ticket::after{ right:-20px; }
+
+/* ✔ Checkmark */
+.checkmark{
+  font-size:50px;
+  color:green;
+  animation:pop 0.5s ease;
+}
+
+@keyframes pop{
+  from{ transform:scale(0); }
+  to{ transform:scale(1); }
+}
+
+/* Text */
+h1{
+  margin:10px 0;
+}
+
+.tagline{
+  font-size:24px;
+  margin-bottom:15px;
+}
+
+.details-box {
+  background: linear-gradient(135deg, #fdfdfd, #f3f3f3);
+  border: 1px solid #ddd;       /* subtle border */
+  border-radius: 12px;
+  padding: 15px;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 360px;            
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+/* Details */
+.ticket-details{
+  text-align:center;
+  margin:20px auto;
+  font-size:20px;
+  width:100%;  
+}
+ 
+.ticket-details b {
+  width: 120px;       /* fixed width for labels */
+  font-weight: bold;
+  text-align: left;
+   white-space: nowrap;
+}
+
+.ticket-details p{
+  display:flex;
+  display: flex;                  /* keeps label and value inline */
+  justify-content: flex-start;    /* align left */
+  gap: 8px;                       /* space between label and value */
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.ticket-details span {
+  flex: 1;                        /* value takes remaining space */
+  text-align: left;
+  word-break: break-word;   
+}
+
+.ticket-footer{
+  font-size:18px;
+  color:gray;
+  font-family:Metal;
+}
+
+/* Button */
+.home-btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 20px;
+  background:#2a5298;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  transition:0.3s;
+  font-size:20px;
+}
+
+.home-btn:hover{
+  background:#005fcc;
+  transform:scale(1.05);
+}
+
+/* 📱 PERFECT MOBILE VIEW */
+@media (max-width: 768px){
+
+  *{
+    box-sizing: border-box;
+  }
+
+  body{
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .ticket{
+    width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  h1{
+    font-size: 26px;
+  }
+
+  .checkmark{
+    font-size: 50px;
+  }
+
+  .tagline{
+    font-size: 18px;
+  }
+
+  /* DETAILS BOX */
+  .details-box{
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  /* ✅ KEEP INLINE FLEX ON MOBILE */
+  .ticket-details{
+    font-size: 18px;
+  }
+
+  .ticket-details p{
+    display: flex;                /* inline row */
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .ticket-details b{
+    flex: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 4px;
+    white-space: nowrap;          /* keeps label on same line */
+    color: #555;
+  }
+
+  .ticket-details span{
+    flex: 1;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+    word-break: break-word;       /* wraps long values gracefully */
+  }
+
+  .ticket-footer{
+    font-size: 18px;
+  }
+
+  .home-btn{
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  /* Cut circles smaller */
+  .ticket::before,
+  .ticket::after{
+    width: 18px;
+    height: 18px;
+  }
+
+  .ticket::before{ left:-9px; }
+  .ticket::after{ right:-9px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="ticket">
+
+  <div class="checkmark">✔</div>
+
+  <h1>Booking Confirmed!</h1>
+  <p class="tagline">Your journey begins with us ✈️</p>
+
+  <div class="details-box">
+  <div class="ticket-details">
+    <p><b>Booking ID:</b> <span id="bookingid"></span></p>
+    <p><b>Hotel:</b> <span id="hotel"></span></p>
+    <p><b>Price:</b> <span id="price"></span></p>
+    <p><b>Name:</b> <span id="name"></span></p>
+    <p><b>Email:</b> <span id="email"></span></p>
+    <p><b>Check-in:</b> <span id="checkin"></span></p>
+    <p><b>Check-out:</b> <span id="checkout"></span></p>
+  </div>
+</div>
+
+  <div class="ticket-footer">
+    <p>📧 Confirmation sent to your email</p>
+    <p>📞 Our team will contact you soon</p>
+  </div>
+
+  <a href="travel1.html" class="home-btn">Back to Home</a>
+
+</div>
+
+<script>
+
+// Load data from localStorage
+document.getElementById("hotel").innerText = localStorage.getItem("hotel") || "Grand Resort";
+document.getElementById("price").innerText = localStorage.getItem("price") || "₹5000";
+document.getElementById("name").innerText = localStorage.getItem("name") || "Guest";
+document.getElementById("email").innerText = localStorage.getItem("email") || "guest@email.com";
+document.getElementById("checkin").innerText = localStorage.getItem("checkin") || "N/A";
+document.getElementById("checkout").innerText = localStorage.getItem("checkout") || "N/A";
+
+// Booking ID
+let bookingID = "TF" + Math.floor(Math.random() * 100000);
+document.getElementById("bookingid").innerText = bookingID;
+
+// 🎉 Confetti
+confetti({
+  particleCount:150,
+  spread:100,
+  origin:{ y:0.6 }
+});
+
+</script>
+
+</body>
+</html>

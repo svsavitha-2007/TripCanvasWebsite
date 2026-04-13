@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TripCanvas</title>
+
+<link rel="stylesheet" href="style.css">
+<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet'>
+
+<!----Favicon--->
+<link rel="icon" type="image/png" href="images/logo.png">
+<link href='https://fonts.googleapis.com/css?family=Metal' rel='stylesheet'>
+
+</head>
+<body class="about-page">
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" class="nav-logo">
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="nav-links" id="navLinks">
+    <a href="travel1.html">🏡Home</a>
+    <a href="#" onclick="goToDestinations()">🗺️Destinations</a>
+    <a href="#" onclick="goToHotels()">🍽️Hotels</a>
+    <a href="#" onclick="goToPlanner()">🗓️Trip Planner</a>
+    <a href="about.html">About</a>
+    <a href="contact1.html">📞Contact</a>
+  </nav>
+
+  <!-- Right side: hamburger + profile -->
+  <div class="nav-right">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="profile-container" onclick="toggleProfile()">
+    <div class="profile-circle" id="profileCircle"></div>
+      <div class="profile-dropdown" id="profileDropdown">
+      <p id="userEmailDisplay"></p>
+      <a href="#" onclick="logout()">Logout</a>
+  </div>
+</div>
+  </div>
+</header>
+
+
+
+<section class="about-hero">
+    <h1>Our Story</h1>
+    <p>Not just travel. We create experiences.</p>
+</section>
+
+<section class="about-story">
+    <div class="story-box">
+        <h2>How Travel Factory Started</h2><br>
+        <p>
+            Travel Factory was created with a simple idea — travel should not be stressful,
+            it should be exciting. We wanted travelers to find destinations, hotels,
+            and plan trips all in one place with ease and elegance.
+        </p>
+    </div>
+
+    <div class="story-box">
+        <h2>What We Offer</h2><br>
+        <p>
+            From royal palace stays to peaceful nature retreats, we help you choose
+            the perfect place to stay and plan your journey without confusion.
+        </p>
+    </div>
+
+    <div class="story-box">
+        <h2>Our Mission</h2><br>
+        <p>
+            To make travel plann ing simple, beautiful, and enjoyable for everyone.
+        </p>
+    </div>
+</section>
+
+<section class="timeline-section">
+<h2 class="timeline-title">Our Journey</h2>
+
+<div class="timeline">
+
+  <div class="timeline-box">
+    <div class="timeline-card">
+      <h3>2023</h3>
+      <p>Travel Factory started with a vision to simplify travel planning.</p>
+    </div>
+  </div>
+
+  <div class="timeline-box">
+    <div class="timeline-card">
+      <h3>2024</h3>
+      <p>We introduced hotel booking and destination exploration.</p>
+    </div>
+  </div>
+
+  <div class="timeline-box">
+    <div class="timeline-card">
+      <h3>2025</h3>
+      <p>Trip planner and smart recommendations were launched.</p>
+    </div>
+  </div>
+
+  <div class="timeline-box">
+    <div class="timeline-card">
+      <h3>2026</h3>
+      <p>We are expanding with premium travel experiences.</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="stats">
+  <div class="stats-container">
+
+    <div class="stat-card">
+      <div class="stat-icon">🏨</div>
+      <h1>500+</h1>
+      <p>Luxury Hotels</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🗺️</div>
+      <h1>200+</h1>
+      <p>Top Destinations</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">❤️</div>
+      <h1>1000+</h1>
+      <p>Happy Clients</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="why-us">
+  <h2>Why Choose TripCanvas?</h2><br>
+  <div class="why-container">
+
+    <div class="why-card">
+      <h3>🌍 All-in-One Platform</h3><br>
+      <p>Find destinations, book hotels, and plan trips in one place.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>💰 Budget Friendly</h3><br>
+      <p>Plan trips according to your budget with smart tools.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>⭐ Trusted Recommendations</h3><br>
+      <p>Carefully selected destinations and hotels.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>📅 Smart Trip Planner</h3><br>
+      <p>Create your perfect itinerary بسهولة and quickly.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="quote">
+  <h2>"Travel is the only thing you buy that makes you richer."</h2>
+</section>
+
+<script>
+let timelineCards = document.querySelectorAll(".timeline-card");
+
+window.addEventListener("scroll", function() {
+  timelineCards.forEach(card => {
+    let position = card.getBoundingClientRect().top;
+    if(position < window.innerHeight - 100){
+      card.classList.add("show");
+    }
+  });
+});
+
+let counters = document.querySelectorAll(".stat-card h1");
+
+counters.forEach(counter => {
+  let target = counter.innerText.replace("+", "");
+  let count = 0;
+  let speed = target / 100;
+
+  function updateCount() {
+    if(count < target) {
+      count += speed;
+      counter.innerText = Math.floor(count) + "+";
+      setTimeout(updateCount, 20);
+    } else {
+      counter.innerText = target + "+";
+    }
+  }
+
+  updateCount();
+});
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+function logout(){
+  localStorage.removeItem("loggedInUser");
+
+  // hide profile again
+  document.querySelector(".profile-container").style.display = "none";
+
+  alert("Logged out!");
+  location.href="travel1.html";
+}
+
+function toggleProfile(){
+  let dropdown = document.getElementById("profileDropdown");
+  dropdown.style.display = 
+    dropdown.style.display === "block" ? "none" : "block";
+}
+
+window.onload = function(){
+  let user = localStorage.getItem("loggedInUser");
+
+  if(user){
+    // SHOW profile
+    document.querySelector(".profile-container").style.display = "block";
+
+    // Set first letter
+    let firstLetter = user.charAt(0).toUpperCase();
+    document.getElementById("profileCircle").innerText = firstLetter;
+
+    // Show email
+    document.getElementById("userEmailDisplay").innerText = user;
+  }
+};
+
+
+</script>
+
+<footer class="footer">
+<div class="footer-container">
+
+<div class = "footer-section">
+<h3>TripCanvas</h3>
+<p>Your trusted partner for planning memorable trips across India and the World.</p>
+</div>
+<div class="footer-section">
+<h3>Quick Links</h3>
+<a href="travel1.html">Home</a><br>
+<a href="destinations1.html">Destinations</a><br>
+<a href="hotels1.html">Hotels</a><br>
+<a href="planner1.html">Trip Planner</a><br>
+<a href="about.html">About</a></br>
+<a href="contact1.html">Contact</a>
+</div>
+
+<div class="footer-section">
+<h3>Contact Us</h3>
+<p>📍Bangalore,India</p>
+<p>📞 +91 98765 43210</p>
+<p>📧 tripCanvas@gmail.com</p>
+</div>
+
+</div>
+
+<p class="copyright">© 2026 TripCanvas | All Rights Reserved </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TripCanvas</title>
+
+<link rel="stylesheet" href="style.css">
+<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Metal' rel='stylesheet'>
+
+<!----Favicon--->
+<link rel="icon" type="image/png" href="images/logo.png">
+</head>
+
+<body class="home-page">
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" class="nav-logo">
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="nav-links" id="navLinks">
+    <a href="travel1.html">🏡Home</a>
+    <a href="#" onclick="goToDestinations()">🗺️Destinations</a>
+    <a href="#" onclick="goToHotels()">🍽️Hotels</a>
+    <a href="#" onclick="goToPlanner()">🗓️Trip Planner</a>
+    <a href="about.html">About</a>
+    <a href="contact1.html">📞Contact</a>
+  </nav>
+
+  <!-- Right side: hamburger + profile -->
+  <div class="nav-right">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="profile-container" onclick="toggleProfile()">
+    <div class="profile-circle" id="profileCircle"></div>
+      <div class="profile-dropdown" id="profileDropdown">
+      <p id="userEmailDisplay"></p>
+      <a href="#" onclick="logout()">Logout</a>
+  </div>
+</div>
+  </div>
+</header>
+
+<section class="hero">
+<video autoplay muted loop playsinline class="heading-video">
+<source src="videos/v10.mp4" type="video/mp4">
+</video>
+<div class="hero-gradient"></div>
+</section>
+ 
+<div class="hero-text">
+<h2>Discover Your Next Adventure</h2>
+<p>Find beautiful destinations and book your perfect stay</p>
+<button class="explore-btn center-btn" onclick="handleExplore()">Explore Now</button>
+</div>
+
+<section class="destinations" id="home">
+<h2>Find Your Categories</h2>
+<div class="card-container">
+
+<div class="card">
+<img src="images/destinations.jpg">
+<h3>Destinations</h3>
+<a href="#" onclick="goToDestinations()">
+<button class="explore-btn">Discover</button>
+</a>
+</div>
+
+<div class="card">
+  <img src="images/hotels.jpg">
+  <h3>Hotels & Resorts</h3>
+<a href="#" onclick="goToHotels()">
+<button class="explore-btn">Find Your Stay</button>
+</a>
+</div>
+
+</div>
+</section>
+
+<!-- LOGIN POPUP -->
+<div id="loginPopup" class="popup">
+
+  <div class="login-box">
+
+    <span class="close-btn" onclick="closeLogin()">×</span>
+
+    <!-- LOGIN -->
+    <div id="loginForm">
+      <h2>Welcome Back❤️</h2>
+
+      <form onsubmit="loginUser(event)">
+        <input type="email" id="loginEmail" placeholder="📧 Email" required>
+        <small id="loginEmailError" class="error"></small>
+        <div id="loginMessage" class="form-message"></div>
+
+
+        <div class="password-box">
+          <input type="password" id="loginPassword" placeholder="🔒 Password" required>
+          <span onclick="togglePassword('loginPassword', this)" class="toggle-text">Show</span>
+        </div>
+        <small id="loginPassError" class="error"></small>
+
+        <button type="submit">Sign In</button>
+      </form>
+
+      <p class="switch-text">New user? 
+        <span onclick="showSignup()">Create Account</span>
+      </p>
+    </div>
+
+    <!-- SIGNUP -->
+    <div id="signupForm" style="display:none;">
+      <h2>Create Account 🌍</h2>
+
+      <form onsubmit="registerUser(event)">
+        <input type="text" id="signupName" placeholder="👤 Name" required>
+        <small id="nameError" class="error"></small>
+
+        <input type="email" id="signupEmail" placeholder="📧 Email" required>
+        <small id="emailError" class="error"></small>
+
+        <div class="password-box">
+          <input type="password" id="signupPassword" placeholder="🔒 Password" required>
+          <span onclick="togglePassword('signupPassword', this)" class="toggle-text">Show</span>
+        </div>
+        <small id="passError" class="error"></small>
+
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <p class="switch-text">Already have account? <br>
+        <span onclick="showLogin()">Sign In</span>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+<footer class="footer">
+<div class="footer-container">
+
+<div class = "footer-section">
+<h3>TripCanvas</h3>
+<p>Your trusted partner for planning memorable trips across India and the World.</p>
+</div>
+<div class="footer-section">
+<h3>Quick Links</h3>
+<a href="travel1.html">Home</a><br>
+<a href="destinations1.html">Destinations</a><br>
+<a href="hotels1.html">Hotels</a><br>
+<a href="planner1.html">Trip Planner</a><br>
+<a href="about.html">About</a></br>
+<a href="contact1.html">Contact</a>
+</div>
+<div class="footer-section">
+<h3>Contact Us</h3>
+<p>📍Bangalore,India</p>
+<p>📞 +91 98765 43210</p>
+<p>📧 tripCanvas@gmail.com</p>
+</div>
+
+</div>
+
+<p class="copyright">© 2026 TripCanvas | All Rights Reserved </p>
+</footer>
+
+<script>
+function scrollToSection() {
+  document.getElementById("home").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+window.addEventListener("scroll", function() {
+  let cards = document.querySelectorAll(".card");
+  let windowHeight = window.innerHeight;
+
+  cards.forEach(card => {
+    let cardTop = card.getBoundingClientRect().top;
+
+    if (cardTop < windowHeight - 50) {
+      card.classList.add("show");
+    }
+  });
+});
+
+window.onscroll = function() {
+  let btn = document.getElementById("topBtn");
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function handleExplore(){
+  if(checkLogin()){
+    scrollToSection();
+  }
+}
+
+function goToHotels(){
+  if(checkLogin()){
+    window.location.href = "hotels1.html";
+  }
+}
+
+function goToDestinations(){
+  if(checkLogin()){
+    window.location.href = "destinations1.html";
+  }
+}
+
+function goToPlanner(){
+  if(checkLogin()){
+    window.location.href = "planner1.html";
+  }
+}
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+function openLogin(){
+  document.getElementById("loginPopup").style.display = "flex";
+}
+
+function closeLogin(){
+  document.getElementById("loginPopup").style.display = "none";
+}
+
+function showSignup(){
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("signupForm").style.display = "block";
+}
+
+function showLogin(){
+  document.getElementById("signupForm").style.display = "none";
+  document.getElementById("loginForm").style.display = "block";
+}
+
+function togglePassword(id, element){
+  let field = document.getElementById(id);
+
+  if(field.type === "password"){
+    field.type = "text";
+    element.innerText = "Hide";
+  } else {
+    field.type = "password";
+    element.innerText = "Show";
+  }
+}
+
+function isValidEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function loginUser(e){
+  e.preventDefault();
+
+  let email = document.getElementById("loginEmail").value.trim();
+  let pass = document.getElementById("loginPassword").value.trim();
+
+  let storedEmail = localStorage.getItem("userEmail");
+  let storedPass = localStorage.getItem("userPassword");
+
+  let msg = document.getElementById("loginMessage");
+
+  // reset
+  msg.innerText = "";
+  msg.className = "form-message";
+  loginEmailError.innerText = "";
+  loginPassError.innerText = "";
+
+  // ✅ Email validation
+  if(!isValidEmail(email)){
+    msg.innerText = "Enter valid email";
+    msg.classList.add("error");
+    return;
+  }
+
+  // ✅ No account found
+  if(!storedEmail || !storedPass){
+    msg.innerText = "No account found. Please sign up!";
+    msg.classList.add("error");
+    showSignup();
+    return;
+  }
+
+  // ✅ Wrong credentials
+  if(email !== storedEmail || pass !== storedPass){
+    msg.innerText = "Invalid email or password";
+    msg.classList.add("error");
+    return;
+  }
+
+  // ✅ SUCCESS
+  localStorage.setItem("loggedInUser", email);
+
+  msg.innerText = "Login successful!";
+  msg.classList.add("success");
+
+  setTimeout(() => {
+    closeLogin();
+
+    document.querySelector(".profile-container").style.display = "block";
+
+    let firstLetter = email.charAt(0).toUpperCase();
+    document.getElementById("profileCircle").innerText = firstLetter;
+    document.getElementById("userEmailDisplay").innerText = email;
+
+  }, 800);
+}
+
+/* SIGNUP */
+function registerUser(e){
+  e.preventDefault();
+
+  let name = signupName.value.trim();
+  let email = signupEmail.value.trim();
+  let pass = signupPassword.value.trim();
+
+  nameError.innerText = "";
+  emailError.innerText = "";
+  passError.innerText = "";
+
+  if(name.length < 3){
+    nameError.innerText = "Name too short";
+    return;
+  }
+
+  if(!isValidEmail(email)){
+    emailError.innerText = "Invalid email";
+    return;
+  }
+
+  if(pass.length < 6){
+    passError.innerText = "Password must be 6+ chars";
+    return;
+  }
+
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("userPassword", pass);
+
+  alert("Account created!");
+  showLogin();
+ 
+}
+
+  function checkLogin(){
+  let user = localStorage.getItem("loggedInUser");
+
+  if(!user){
+    alert("⚠️ Please login to continue");
+    openLogin(); // open popup
+    return false;
+  }
+  return true;
+}
+
+function logout(){
+  localStorage.removeItem("loggedInUser");
+
+  // hide profile again
+  document.querySelector(".profile-container").style.display = "none";
+
+  alert("Logged out!");
+  location.href="travel1.html";
+}
+
+function toggleProfile(){
+  let dropdown = document.getElementById("profileDropdown");
+  dropdown.style.display = 
+    dropdown.style.display === "block" ? "none" : "block";
+}
+
+window.onload = function(){
+  let user = localStorage.getItem("loggedInUser");
+
+  if(user){
+    // SHOW profile
+    document.querySelector(".profile-container").style.display = "block";
+
+    // Set first letter
+    let firstLetter = user.charAt(0).toUpperCase();
+    document.getElementById("profileCircle").innerText = firstLetter;
+
+    // Show email
+    document.getElementById("userEmailDisplay").innerText = user;
+  }
+};
+
+</script>
+
+<button onclick="scrollToTop()" id="topBtn">↑</button>
+
+</body>
+</html>
+
+

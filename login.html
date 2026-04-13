@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - TripCanvas</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Metal' rel='stylesheet'>
+</head>
+
+<body class="login-page">
+
+<div class="login-container">
+
+  <!-- LOGIN FORM -->
+  <div id="loginForm">
+    <h2>Welcome Back</h2>
+
+    <form onsubmit="loginUser(event)">
+      <input type="email" id="loginEmail" placeholder="📧 Enter Email" required>
+     <div style="position:relative;">
+  <input type="password" id="loginPassword" placeholder="🔒 Enter Password" required>
+  <span onclick="togglePassword('loginPassword')" class="eye">👁️</span>
+</div>
+
+      <button type="submit">Sign In</button><br>
+    </form>
+
+    <p>New user? <span class="link" onclick="showSignup()">Sign Up</span></p>
+    <p id="loginMsg"></p>
+  </div>
+
+  <!-- SIGNUP FORM -->
+  <div id="signupForm" style="display:none;">
+    <h2>Create Account</h2>
+
+    <form onsubmit="registerUser(event)">
+      <input type="text" id="signupName" placeholder="👤 Enter Name" required>
+      <input type="email" id="signupEmail" placeholder="📧 Enter Email" required>
+      <div style="position:relative;">
+  <input type="password" id="signupPassword" placeholder="🔒 Create Password" required>
+  <span onclick="togglePassword('signupPassword')" class="eye">👁️</span>
+</div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p>Already have an account? <span class="link" onclick="showLogin()">Login</span></p>
+    <p id="signupMsg"></p>
+  </div>
+
+</div>
+
+<script>
+// SWITCH FORMS
+function showSignup(){
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("signupForm").style.display = "block";
+}
+
+function showLogin(){
+  document.getElementById("signupForm").style.display = "none";
+  document.getElementById("loginForm").style.display = "block";
+}
+
+
+// REGISTER USER
+function registerUser(event){
+  event.preventDefault();
+
+  let name = document.getElementById("signupName").value;
+  let email = document.getElementById("signupEmail").value;
+  let password = document.getElementById("signupPassword").value;
+
+  // Store in localStorage
+  localStorage.setItem("userName", name);
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("userPassword", password);
+
+  document.getElementById("signupMsg").innerText = "Account Created Successfully!";
+
+  // Switch to login
+  setTimeout(showLogin, 1500);
+}
+
+function togglePassword(id){
+  let field = document.getElementById(id);
+
+  if(field.type === "password"){
+    field.type = "text";
+  } else {
+    field.type = "password";
+  }
+}
+
+// LOGIN USER
+function loginUser(event) {
+  event.preventDefault();
+
+  let email = document.getElementById("loginEmail").value;
+  let password = document.getElementById("loginPassword").value;
+
+  let storedEmail = localStorage.getItem("userEmail");
+  let storedPassword = localStorage.getItem("userPassword");
+
+  if (email === storedEmail && password === storedPassword) {
+    localStorage.setItem("loggedInUser", email);
+    alert("Login Successful!");
+    window.location.href = "travel1.html";
+  } else {
+    document.getElementById("loginMsg").innerText = "Invalid Email or Password!";
+  }
+}
+</script>
+
+</body>
+</html>

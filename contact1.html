@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TripCanvas</title>
+
+<link rel="stylesheet" href="style.css">
+<link href='https://fonts.googleapis.com/css?family=Metal' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet'>
+
+
+<!----Favicon--->
+<link rel="icon" type="image/png" href="images/logo.png">
+</head>
+
+<body class="contact-page">
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" class="nav-logo">
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="nav-links" id="navLinks">
+    <a href="travel1.html">🏡Home</a>
+    <a href="#" onclick="goToDestinations()">🗺️Destinations</a>
+    <a href="#" onclick="goToHotels()">🍽️Hotels</a>
+    <a href="#" onclick="goToPlanner()">🗓️Trip Planner</a>
+    <a href="about.html">About</a>
+    <a href="contact1.html">📞Contact</a>
+  </nav>
+
+  <!-- Right side: hamburger + profile -->
+  <div class="nav-right">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="profile-container" onclick="toggleProfile()">
+    <div class="profile-circle" id="profileCircle"></div>
+      <div class="profile-dropdown" id="profileDropdown">
+      <p id="userEmailDisplay"></p>
+      <a href="#" onclick="logout()">Logout</a>
+  </div>
+</div>
+  </div>
+</header>
+
+<section class="contact-container">
+
+    <div class="contact-left">
+        <h2>Get in Touch</h2><br>
+        <p>Have questions? Planning a trip? We are here to help you.</p><br>
+
+        <div class="contact-card">📍 Bangalore, India</div>
+        <div class="contact-card">📞 +91 98765 43210</div>
+        <div class="contact-card">📧 tripCanvas@email.com</div>
+    </div>
+
+    <div class="contact-right">
+        <h2>Send Message</h2><br>
+        <p style="text-align:center; margin-bottom:20px; font-family:Times New Roman">
+  Let’s turn your travel dreams into reality.
+</p>
+        <form onsubmit="showMessage(event)">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+</section>
+
+<section class="map-section">
+  <h2>Find Us Here</h2><br>
+  <iframe 
+    src="https://www.google.com/maps?q=Bangalore&output=embed"
+    width="100%" 
+    height="100%" 
+    style="border:0;">
+  </iframe>
+</section>
+
+
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-box">
+  <h3>How do I book a hotel? <span>▼</span></h3>
+  <p>You can book a hotel by clicking the Book Now button.</p>
+</div>
+
+<div class="faq-box">
+  <h3>Can I cancel my booking? <span>▼</span></h3>
+  <p>Yes, you can cancel within 24 hours of booking.</p>
+</div>
+
+<div class="faq-box">
+  <h3>Do you provide trip planning? <span>▼</span></h3>
+  <p>Yes, use our Trip Planner to plan your journey.</p>
+</div>
+
+</section>
+
+<section class="hours-section">
+  <h2>Business Hours</h2>
+
+  <div class="hours-box">
+    <p><span>Monday – Friday</span> <b>9:00 AM – 6:00 PM</b></p>
+    <p><span>Saturday</span> <b>10:00 AM – 4:00 PM</b></p>
+    <p><span>Sunday</span> <b>Closed</b></p>
+  </div>
+</section>
+
+
+<footer class="footer">
+<div class="footer-container">
+
+<div class = "footer-section">
+<h3>TripCanvas</h3>
+<p>Your trusted partner for planning memorable trips across India and the World.</p>
+</div>
+<div class="footer-section">
+<h3>Quick Links</h3>
+<a href="travel1.html">Home</a><br>
+<a href="destinations1.html">Destinations</a><br>
+<a href="hotels1.html">Hotels</a><br>
+<a href="planner1.html">Trip Planner</a><br>
+<a href="about.html">About</a></br>
+<a href="contact1.html">Contact</a>
+</div>
+
+<div class="footer-section">
+<h3>Contact Us</h3>
+<p>📍Bangalore,India</p>
+<p>📞 +91 98765 43210</p>
+<p>📧 tripCanvas@gmail.com</p>
+</div>
+
+</div>
+<p class="copyright">© 2026 TripCanvas | All Rights Reserved </p>
+</footer>
+
+<script>
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+function showMessage(event){
+  event.preventDefault();
+
+  let msg = document.createElement("div");
+  msg.innerText = "✅ Message sent successfully! We will contact you soon.";
+  msg.style.position = "fixed";
+  msg.style.bottom = "20px";
+  msg.style.right = "20px";
+  msg.style.background = "#2c3e50";
+  msg.style.color = "white";
+  msg.style.padding = "10px 20px";
+  msg.style.borderRadius = "10px";
+
+  document.body.appendChild(msg);
+
+  setTimeout(() => msg.remove(), 3000);
+
+  event.target.reset();
+}
+
+document.querySelectorAll(".faq-box").forEach(box => {
+  box.addEventListener("click", () => {
+    box.classList.toggle("active");
+  });
+});
+
+function logout(){
+  localStorage.removeItem("loggedInUser");
+
+  // hide profile again
+  document.querySelector(".profile-container").style.display = "none";
+
+  alert("Logged out!");
+  location.href="travel1.html";
+}
+
+function toggleProfile(){
+  let dropdown = document.getElementById("profileDropdown");
+  dropdown.style.display = 
+    dropdown.style.display === "block" ? "none" : "block";
+}
+
+window.onload = function(){
+  let user = localStorage.getItem("loggedInUser");
+
+  if(user){
+    // SHOW profile
+    document.querySelector(".profile-container").style.display = "block";
+
+    // Set first letter
+    let firstLetter = user.charAt(0).toUpperCase();
+    document.getElementById("profileCircle").innerText = firstLetter;
+
+    // Show email
+    document.getElementById("userEmailDisplay").innerText = user;
+  }
+};
+
+</script>
+
+</script>
+</body>
+</html>
