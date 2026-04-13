@@ -2244,21 +2244,22 @@ text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 @media (max-width: 746px){
   .planner-card h3 {
     font-family:Oregano;
-}
+ }
   .book-btn {
     font-family:Oregano;
-}
+ }
   .close-btn {
     font-family:Oregano;
-}
+ }
   .about-page {
   font-family:Oregano;
-} 
+ } 
  .about-page h1,
  .about-page h2 {
   font-family:Oregano;
   text-align:center;
-}
+ }
   .confirm-btn {
   font-family:Metal;
+ }
 }
