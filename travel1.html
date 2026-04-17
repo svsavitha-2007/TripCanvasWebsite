@@ -90,56 +90,75 @@
 
     <!-- LOGIN -->
     <div id="loginForm">
-      <h2>Welcome Back❤️</h2>
+      <h2>Sign In</h2>
+      <p class="sub-text">Welcome back❤️! Please login to continue</p>
 
       <form onsubmit="loginUser(event)">
-        <input type="email" id="loginEmail" placeholder="📧 Email" required>
+
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="Enter your email">
         <small id="loginEmailError" class="error"></small>
-        <div id="loginMessage" class="form-message"></div>
 
-
+        <label>Password</label>
         <div class="password-box">
-          <input type="password" id="loginPassword" placeholder="🔒 Password" required>
+          <input type="password" id="loginPassword" placeholder="Enter your password">
           <span onclick="togglePassword('loginPassword', this)" class="toggle-text">Show</span>
         </div>
         <small id="loginPassError" class="error"></small>
 
-        <button type="submit">Sign In</button>
+        <div id="loginMessage" class="form-message"></div>
+
+        <button type="submit" class="primary-btn">Sign In</button>
       </form>
 
-      <p class="switch-text">New user? 
+      <p class="switch-text">
+        Don’t have an account?
         <span onclick="showSignup()">Create Account</span>
       </p>
     </div>
 
     <!-- SIGNUP -->
     <div id="signupForm" style="display:none;">
-      <h2>Create Account 🌍</h2>
+      <h2>Create Account</h2>
+      <p class="sub-text">Join us and start planning your trips</p>
 
-      <form onsubmit="registerUser(event)">
-        <input type="text" id="signupName" placeholder="👤 Name" required>
-        <small id="nameError" class="error"></small>
+<form onsubmit="registerUser(event)">
 
-        <input type="email" id="signupEmail" placeholder="📧 Email" required>
-        <small id="emailError" class="error"></small>
+  <div class="input-group" id="nameGroup">
+    <label>Full Name</label>
+    <input type="text" id="signupName" placeholder="Enter your name">
+    <p id="nameHint" class="hint">Only letters, min 3 characters</p>
+  </div>
 
-        <div class="password-box">
-          <input type="password" id="signupPassword" placeholder="🔒 Password" required>
-          <span onclick="togglePassword('signupPassword', this)" class="toggle-text">Show</span>
-        </div>
-        <small id="passError" class="error"></small>
+  <div class="input-group" id="emailGroup">
+    <label>Email</label>
+    <input type="email" id="signupEmail" placeholder="Enter your email">
+    <p id="emailHint" class="hint">Enter a valid email</p>
+  </div>
 
-        <button type="submit">Sign Up</button>
-      </form>
+  <div class="input-group" id="passGroup">
+    <label>Password</label>
+    <div class="password-box">
+      <input type="password" id="signupPassword" placeholder="Create a password">
+      <span onclick="togglePassword('signupPassword', this)" class="toggle-text">Show</span>
+    </div>
+    <p id="passHint" class="hint">Minimum 6 characters</p>
+  </div>
 
-      <p class="switch-text">Already have account? <br>
+  <div id="signupMessage" class="form-message"></div>
+
+  <button type="submit" class="explore-btn">Create Account</button>
+
+</form>
+
+      <p class="switch-text">
+        Already have an account?
         <span onclick="showLogin()">Sign In</span>
       </p>
     </div>
 
   </div>
 </div>
-
 
 <footer class="footer">
 <div class="footer-container">
@@ -263,6 +282,10 @@ function togglePassword(id, element){
   }
 }
 
+function isValidName(name){
+  return /^[A-Za-z\s]+$/.test(name);
+}
+
 function isValidEmail(email){
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -291,13 +314,16 @@ function loginUser(e){
     return;
   }
 
-  // ✅ No account found
   if(!storedEmail || !storedPass){
-    msg.innerText = "No account found. Please sign up!";
-    msg.classList.add("error");
+  msg.innerText = "No account found. Redirecting to Sign Up...";
+  msg.classList.add("error");
+
+  setTimeout(() => {
     showSignup();
-    return;
-  }
+  }, 1200);
+
+  return;
+}
 
   // ✅ Wrong credentials
   if(email !== storedEmail || pass !== storedPass){
@@ -307,61 +333,80 @@ function loginUser(e){
   }
 
   // ✅ SUCCESS
-  localStorage.setItem("loggedInUser", email);
+localStorage.setItem("loggedInUser", email);
 
-  msg.innerText = "Login successful!";
-  msg.classList.add("success");
+msg.innerText = "Login successful! Redirecting...";
+msg.classList.add("success");
 
-  setTimeout(() => {
-    closeLogin();
+setTimeout(() => {
+  closeLogin();
 
-    document.querySelector(".profile-container").style.display = "block";
+  document.querySelector(".profile-container").style.display = "block";
 
-    let firstLetter = email.charAt(0).toUpperCase();
-    document.getElementById("profileCircle").innerText = firstLetter;
-    document.getElementById("userEmailDisplay").innerText = email;
+  let firstLetter = email.charAt(0).toUpperCase();
+  document.getElementById("profileCircle").innerText = firstLetter;
+  document.getElementById("userEmailDisplay").innerText = email;
 
-  }, 800);
+}, 1200);
 }
 
 /* SIGNUP */
 function registerUser(e){
   e.preventDefault();
 
-  let name = signupName.value.trim();
-  let email = signupEmail.value.trim();
-  let pass = signupPassword.value.trim();
+  let name = document.getElementById("signupName").value.trim();
+  let email = document.getElementById("signupEmail").value.trim();
+  let pass = document.getElementById("signupPassword").value.trim();
 
-  nameError.innerText = "";
-  emailError.innerText = "";
-  passError.innerText = "";
+  // 🔥 FIX: define elements properly
+  let nameGroup = document.getElementById("nameGroup");
+  let emailGroup = document.getElementById("emailGroup");
+  let passGroup = document.getElementById("passGroup");
+  let signupMessage = document.getElementById("signupMessage");
 
-  if(name.length < 3){
-    nameError.innerText = "Name too short";
-    return;
-  }
+  let valid = true;
 
-  if(!isValidName(name)){
-     alert("Name should contain only letters");
-  return;
- }
+  // reset
+  signupMessage.innerText = "";
+  signupMessage.className = "form-message";
 
-  if(!isValidEmail(email)){
-    emailError.innerText = "Invalid email";
-    return;
-  }
+  // NAME
+if(name.length < 3 || !isValidName(name)){
+  nameGroup.classList.add("error");
+  valid = false;
+} else {
+  nameGroup.classList.remove("error");
+}
 
-  if(pass.length < 6){
-    passError.innerText = "Password must be 6+ chars";
-    return;
-  }
+// EMAIL
+if(!isValidEmail(email)){
+  emailGroup.classList.add("error");
+  valid = false;
+} else {
+  emailGroup.classList.remove("error");
+}
+
+// PASSWORD
+if(pass.length < 6){
+  passGroup.classList.add("error");
+  valid = false;
+} else {
+  passGroup.classList.remove("error");
+}
+
+if(!valid) return;
+
 
   localStorage.setItem("userEmail", email);
   localStorage.setItem("userPassword", pass);
 
-  alert("Account created!");
-  showLogin();
- 
+ // SUCCESS MESSAGE
+  signupMessage.innerText = "✅Account created! Redirecting...";
+  signupMessage.classList.add("success");
+
+  setTimeout(() => {
+    showLogin();
+  }, 1500);
 }
 
   function checkLogin(){
@@ -407,11 +452,59 @@ window.onload = function(){
   }
 };
 
+signupName.addEventListener("input", () => {
+  let name = signupName.value.trim();
+
+  if(name.length < 3){
+    nameHint.innerText = "Too short";
+    nameHint.className = "hint error";
+    signupName.classList.add("error");
+  } 
+  else if(!isValidName(name)){
+    nameHint.innerText = "Only letters allowed";
+    nameHint.className = "hint error";
+    signupName.classList.add("error");
+  } 
+  else {
+    nameHint.innerText = "Looks good ✔";
+    nameHint.className = "hint success";
+    signupName.classList.remove("error");
+    signupName.classList.add("success");
+  }
+});
+
+signupEmail.addEventListener("input", () => {
+  let email = signupEmail.value.trim();
+
+  if(!isValidEmail(email)){
+    emailHint.innerText = "Invalid email format";
+    emailHint.className = "hint error";
+    signupEmail.classList.add("error");
+  } else {
+    emailHint.innerText = "Valid email ✔";
+    emailHint.className = "hint success";
+    signupEmail.classList.remove("error");
+    signupEmail.classList.add("success");
+  }
+});
+
+signupPassword.addEventListener("input", () => {
+  let pass = signupPassword.value.trim();
+
+  if(pass.length < 6){
+    passHint.innerText = "Too short";
+    passHint.className = "hint error";
+    signupPassword.classList.add("error");
+  } else {
+    passHint.innerText = "Strong enough ✔";
+    passHint.className = "hint success";
+    signupPassword.classList.remove("error");
+    signupPassword.classList.add("success");
+  }
+});
 </script>
 
 <button onclick="scrollToTop()" id="topBtn">↑</button>
 
 </body>
 </html>
-
-
