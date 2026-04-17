@@ -341,6 +341,11 @@ function registerUser(e){
     return;
   }
 
+  if(!isValidName(name)){
+     alert("Name should contain only letters");
+  return;
+ }
+
   if(!isValidEmail(email)){
     emailError.innerText = "Invalid email";
     return;
